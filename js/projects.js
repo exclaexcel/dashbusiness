@@ -147,7 +147,8 @@ const CATEGORY_LABELS = {
  * @param {boolean}     [opts.featured=false]          render only featured projects
  * @param {string}      [opts.filter='all']             category filter
  * @param {number|null} [opts.limit=null]               max cards to render
- * @param {string}      [opts.contactUrl='#contato']    CTA destination
+ * @param {string}      [opts.contactUrl='#contato']    CTA destination for home (fallback)
+ * @param {string}      [opts.projectUrl='projeto.html'] URL template for individual project page
  * @param {string}      [opts.imgBase='']                base path for image URLs
  */
 function renderProjectCards(containerId, opts) {
@@ -155,7 +156,7 @@ function renderProjectCards(containerId, opts) {
   if (!container) return;
 
   const o = Object.assign(
-    { featured: false, filter: 'all', limit: null, contactUrl: '#contato', imgBase: '' },
+    { featured: false, filter: 'all', limit: null, contactUrl: '#contato', projectUrl: null, imgBase: '' },
     opts
   );
 
@@ -164,7 +165,7 @@ function renderProjectCards(containerId, opts) {
   if (o.filter !== 'all') list = list.filter(p => p.category === o.filter);
   if (o.limit)           list = list.slice(0, o.limit);
 
-  container.innerHTML = list.map(p => _buildCardHTML(p, o.contactUrl, o.imgBase)).join('');
+  container.innerHTML = list.map(p => _buildCardHTML(p, o.contactUrl, o.projectUrl, o.imgBase)).join('');
 
   _observeCards(container);
 }
@@ -208,7 +209,7 @@ function _observeCards(container) {
   });
 }
 
-function _buildCardHTML(p, contactUrl, imgBase) {
+function _buildCardHTML(p, contactUrl, projectUrl, imgBase) {
   var typeLabel = CATEGORY_LABELS[p.category] || p.category;
 
   var tagsHtml = p.tags.map(function(tag) {
@@ -221,7 +222,13 @@ function _buildCardHTML(p, contactUrl, imgBase) {
     ? '<img src="' + imgSrc + '" alt="' + p.title + '" loading="lazy">'
     : '<div class="project-card-thumb-placeholder">' + (p.emoji || '✦') + '</div>';
 
-  return '<a class="project-card" href="' + contactUrl + '" data-category="' + p.category + '">'
+  // Se projectUrl for fornecido, criar link para página individual
+  // Caso contrário, usar contactUrl (padrão para home)
+  var href = projectUrl
+    ? projectUrl + '?id=' + p.id
+    : contactUrl;
+
+  return '<a class="project-card" href="' + href + '" data-category="' + p.category + '">'
     + '<div class="project-card-thumb">' + thumbHtml + '</div>'
     + '<div class="project-card-body">'
     +   '<span class="project-type">' + typeLabel + '</span>'

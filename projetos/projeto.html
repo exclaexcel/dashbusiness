@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Projeto — Dash Business</title>
+  <meta name="description" content="Detalhes do projeto — Dash Business">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav id="navbar">
+    <img src="../assets/logo/dash-logo-full.png" class="navbar-bg-img" alt="">
+    <div class="container">
+      <div class="nav-inner">
+        <a href="../index.html" class="nav-logo"></a>
+        <ul class="nav-links">
+          <li><a href="../index.html#sobre"         class="nav-link">Sobre</a></li>
+          <li><a href="../index.html#especialistas" class="nav-link">Especialistas</a></li>
+          <li><a href="../index.html#portfolio"     class="nav-link active">Portfólio</a></li>
+          <li><a href="../index.html#contato"       class="nav-link">Contato</a></li>
+        </ul>
+        <div class="nav-actions">
+          <button id="nav-hamburger" aria-label="Abrir menu">
+            <span></span><span></span><span></span>
+          </button>
+        </div>
+      </div>
+    </div>
+    <div class="nav-mobile" id="nav-mobile">
+      <a href="../index.html#sobre">Sobre</a>
+      <a href="../index.html#especialistas">Especialistas</a>
+      <a href="../index.html#portfolio" class="active">Portfólio</a>
+      <a href="../index.html#contato">Contato</a>
+    </div>
+  </nav>
+
+  <main id="projeto-main">
+
+    <!-- CABEÇALHO DO PROJETO -->
+    <section class="projeto-header">
+      <div class="container">
+        <a href="index.html" class="projeto-back">← Voltar à biblioteca</a>
+        <div class="projeto-header-content">
+          <span class="projeto-category"></span>
+          <h1 id="projeto-title"></h1>
+          <p id="projeto-context" class="projeto-context" style="display: none;"></p>
+        </div>
+      </div>
+    </section>
+
+    <!-- IMAGEM PRINCIPAL -->
+    <section class="projeto-image-section">
+      <div class="projeto-image-wrapper">
+        <img id="projeto-main-image" src="" alt="" class="projeto-main-image">
+      </div>
+    </section>
+
+    <!-- GALERIA (se houver múltiplas imagens) -->
+    <section id="projeto-gallery-section" class="projeto-gallery-section" style="display: none;">
+      <div class="container">
+        <h3>Galeria</h3>
+        <div id="projeto-gallery" class="projeto-gallery"></div>
+      </div>
+    </section>
+
+    <!-- ANTES / AGORA -->
+    <section class="projeto-comparison">
+      <div class="container">
+        <div class="comparison-grid">
+          <div class="comparison-card antes">
+            <span class="comparison-label">Antes</span>
+            <div id="projeto-before" class="comparison-content"></div>
+          </div>
+          <div class="comparison-arrow">→</div>
+          <div class="comparison-card agora">
+            <span class="comparison-label">Agora</span>
+            <div id="projeto-after" class="comparison-content"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- OBSERVAÇÕES -->
+    <section id="projeto-notes-section" class="projeto-notes-section" style="display: none;">
+      <div class="container">
+        <div class="projeto-notes-box">
+          <h3>Observações</h3>
+          <p id="projeto-notes"></p>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTAs -->
+    <section class="projeto-ctas">
+      <div class="container">
+        <a href="index.html" class="btn-ghost">← Voltar à biblioteca</a>
+        <a href="../index.html#contato" class="btn-outline">Falar com um especialista →</a>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container">
+      <p>© 2026 Dash Business — Dados, estratégia e eficiência para decisões melhores.</p>
+    </div>
+  </footer>
+
+  <button id="back-to-top" aria-label="Voltar ao topo">↑</button>
+
+  <script src="../js/projects.js"></script>
+  <script src="../js/main.js"></script>
+  <script>
+    // Renderizar projeto individual
+    document.addEventListener('DOMContentLoaded', function () {
+      const params = new URLSearchParams(window.location.search);
+      const projectId = params.get('id');
+
+      if (!projectId) {
+        window.location.href = 'index.html';
+        return;
+      }
+
+      const project = DB_PROJECTS.find(p => p.id === projectId);
+      if (!project) {
+        window.location.href = 'index.html';
+        return;
+      }
+
+      // Atualizar title/meta
+      document.title = project.title + ' — Dash Business';
+
+      // Preencher elementos
+      document.getElementById('projeto-title').textContent = project.title;
+      document.querySelector('.projeto-category').textContent = CATEGORY_LABELS[project.category] || project.category;
+
+      if (project.context) {
+        document.getElementById('projeto-context').textContent = project.context;
+        document.getElementById('projeto-context').style.display = 'block';
+      }
+
+      // Imagem principal
+      if (project.image) {
+        document.getElementById('projeto-main-image').src = '../' + project.image;
+        document.getElementById('projeto-main-image').alt = project.title;
+      }
+
+      // Galeria (se múltiplas imagens)
+      if (project.images && project.images.length > 0) {
+        const gallery = document.getElementById('projeto-gallery');
+        gallery.innerHTML = project.images.map(img =>
+          `<img src="../${img}" alt="${project.title}" class="galeria-img">`
+        ).join('');
+        document.getElementById('projeto-gallery-section').style.display = 'block';
+      }
+
+      // Antes / Agora
+      const beforeEl = document.getElementById('projeto-before');
+      if (project.before) {
+        beforeEl.innerHTML = `<p>${project.before}</p>`;
+      } else {
+        beforeEl.innerHTML = '<p class="info-placeholder">ℹ️ Informação a complementar</p>';
+      }
+
+      const afterEl = document.getElementById('projeto-after');
+      if (project.after) {
+        afterEl.innerHTML = `<p>${project.after}</p>`;
+      } else {
+        afterEl.innerHTML = '<p>Não disponível</p>';
+      }
+
+      // Observações
+      if (project.notes) {
+        document.getElementById('projeto-notes').textContent = project.notes;
+        document.getElementById('projeto-notes-section').style.display = 'block';
+      }
+
+      // Tags
+      if (project.tags && project.tags.length > 0) {
+        const tagHtml = project.tags.map(tag =>
+          `<span class="card-ctx-tag">${tag}</span>`
+        ).join('');
+        const tagContainer = document.createElement('div');
+        tagContainer.className = 'card-context';
+        tagContainer.innerHTML = tagHtml;
+        document.querySelector('.projeto-header-content').appendChild(tagContainer);
+      }
+    });
+  </script>
+</body>
+</html>
