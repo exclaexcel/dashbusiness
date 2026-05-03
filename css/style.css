@@ -583,6 +583,26 @@ section { padding: 96px 0; }
   margin-top: 0;
 }
 
+.specialist-btn-bio {
+  display: inline-block;
+  margin-top: 12px;
+  padding: 10px 20px;
+  border: 1.5px solid var(--accent);
+  border-radius: 99px;
+  background: transparent;
+  color: var(--accent);
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all var(--transition);
+}
+
+.specialist-btn-bio:hover {
+  background: var(--accent);
+  color: #0B1114;
+  box-shadow: 0 6px 16px var(--accent-glow);
+}
+
 /* ---------- PORTFÓLIO ------------------------------------- */
 #portfolio { background: var(--bg-card); }
 
@@ -985,6 +1005,131 @@ footer p { font-size: 0.85rem; color: var(--text-muted); }
 }
 
 .fade-in.visible { opacity: 1; transform: translateY(0); }
+
+/* ---------- SPECIALIST BIO MODAL ----------------------------- */
+.bio-modal {
+  display: none;
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  z-index: 1000;
+  align-items: center;
+  justify-content: center;
+}
+
+.bio-modal.open {
+  display: flex;
+}
+
+.bio-modal-backdrop {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(11, 17, 20, 0.92);
+  backdrop-filter: blur(4px);
+  z-index: 1;
+}
+
+.bio-modal-content {
+  position: relative;
+  z-index: 2;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 48px;
+  max-width: 700px;
+  width: 90vw;
+  max-height: 85vh;
+  overflow-y: auto;
+  box-shadow: var(--shadow-lg);
+  animation: slideUp 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.bio-modal-close {
+  position: absolute;
+  top: 24px; right: 24px;
+  width: 40px; height: 40px;
+  border: none;
+  background: transparent;
+  color: var(--text-muted);
+  font-size: 28px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: color var(--transition);
+  z-index: 3;
+}
+
+.bio-modal-close:hover {
+  color: var(--text);
+}
+
+.bio-modal-body {
+  padding-right: 0;
+}
+
+.bio-modal-name {
+  font-size: 1.75rem;
+  margin-bottom: 8px;
+  color: var(--text);
+}
+
+.bio-modal-title {
+  font-size: 1rem;
+  color: var(--accent);
+  margin-bottom: 28px;
+  font-weight: 600;
+}
+
+.bio-modal-text {
+  color: var(--text-muted);
+  line-height: 1.8;
+  margin-bottom: 28px;
+}
+
+.bio-modal-text p {
+  margin-bottom: 16px;
+}
+
+.bio-modal-text p:last-child {
+  margin-bottom: 0;
+}
+
+.bio-modal-quote {
+  border-left: 3px solid var(--accent);
+  padding-left: 24px;
+  font-style: italic;
+  color: var(--accent);
+  font-size: 1.05rem;
+  font-weight: 500;
+  line-height: 1.6;
+}
+
+/* Bio modal scrollbar */
+.bio-modal-content::-webkit-scrollbar {
+  width: 6px;
+}
+
+.bio-modal-content::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.bio-modal-content::-webkit-scrollbar-thumb {
+  background: var(--accent);
+  border-radius: 3px;
+}
 
 /* ---------- RESPONSIVE ------------------------------------ */
 @media (max-width: 900px) {
