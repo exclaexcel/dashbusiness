@@ -68,16 +68,21 @@
 
 ---
 
-## 📝 Próximos Passos (Opcionais)
+### 8. Páginas Individuais de Projetos
+- ✅ Template dinâmico criado em `projetos/projeto.html`
+- ✅ URL: `projetos/projeto.html?id={slug}`
+- ✅ Renderiza: imagem + antes/agora + observações + tags
+- ✅ Cards da biblioteca linkam para página individual
+- ✅ Tratamento de projetos sem "antes" (mostra aviso)
+- ✅ Responsive (antes/agora lado a lado em desktop, empilhado em mobile)
 
-### Página Individual de Projeto
-- Criar template em `projetos/[slug]/index.html`
-- Estrutura: imagem principal + galeria + antes/agora + descrição
-- Rota dinâmica via JS ou arquivos estáticos individuais
+---
+
+## 📝 Próximos Passos (Opcionais)
 
 ### Imagens Secundárias / Galeria
 - Se tiver prints adicionais dos projetos, adicionar campo `images: []` ao DB_PROJECTS
-- Renderizar grid de secundárias em página de projeto individual
+- Renderizar grid de secundárias em página de projeto individual (já suportado no HTML)
 
 ### Campo "Antes" do Projeto #7
 - Completar `before` do painel financeiro conforme feedback
@@ -121,9 +126,10 @@
 
 1. `refactor: atualizar estrutura do site...` — atualização de conteúdo e funcionalidades
 2. `chore: organizar imagens e arquivos...` — organização de assets e docs
+3. `feat: criar páginas individuais dinâmicas...` — template de projeto com URL params
 
 ---
 
 **Data de conclusão**: 2026-05-03  
 **Status**: ✅ Pronto para uso  
-**Arquivos alterados**: 5 core + 17 assets + 1 estrutura
+**Arquivos alterados**: 5 core + 17 assets + 1 estrutura + 1 página dinâmica
