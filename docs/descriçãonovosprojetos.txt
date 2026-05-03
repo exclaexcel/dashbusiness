@@ -1,0 +1,117 @@
+[PROJETO]
+Nome: Automação do cálculo de comissão de vendas
+Slug: automacao-calculo-comissao-vendas
+
+[ANTES]
+1 diretor e 1 assistente levavam 3 dias por mês em um processo lento e sujeito a erros.
+
+[AGORA]
+10 minutos, 1 clique, tudo pronto, calculado, com dashboard para análises e email enviado com a prestação de contas para cada representante.
+
+[OBSERVACOES]
+Usar como case de automação + redução de trabalho manual + ganho de tempo + confiabilidade.
+
+--------------------------------------------------
+
+[PROJETO]
+Nome: Dashboard para acompanhamento de processos de inovação
+Slug: dashboard-processos-inovacao
+
+[ANTES]
+Processo inexistente.
+
+[AGORA]
+Funil de vendas, follow-up de propostas e dashboard para acompanhamento gerencial.
+
+[OBSERVACOES]
+Case interessante para mostrar estruturação de processo e visibilidade gerencial.
+
+--------------------------------------------------
+
+[PROJETO]
+Nome: Planilha de precificação de caixas artesanais
+Slug: planilha-precificacao-caixas-artesanais
+
+[ANTES]
+Processo muito manual e sujeito a erros. Centralizado em apenas uma pessoa (a CEO). Por conta da alta demanda e outras responsabilidades, demorava até uma semana para envio da proposta.
+
+[AGORA]
+A elaboração foi delegada para a equipe. Orçamento instantâneo, com geração das propostas pela própria planilha e envio imediato ao cliente. Projeto com regras de negócio complexas para a precificação e várias peculiaridades, todas atendidas pela nova planilha.
+
+[OBSERVACOES]
+Ótimo case para mostrar escalabilidade, delegação e agilidade comercial.
+
+--------------------------------------------------
+
+[PROJETO]
+Nome: Planilha para controle de agenda e prestação de contas de horas de voo
+Slug: controle-agenda-prestacao-contas-horas-voo
+
+[ANTES]
+Processo inexistente. Havia muita incerteza na prestação de contas entre sócios para controle de horas de voo de 5 aviões na empresa de táxi aéreo.
+
+[AGORA]
+Situação resolvida com o desenvolvimento da planilha, que conta com recursos para controle de agenda/calendário, manutenção das aeronaves registradas, horas paradas, prestação de contas dos sócios e DRE.
+
+[OBSERVACOES]
+Case forte para mostrar controle operacional, financeiro e visão consolidada.
+
+--------------------------------------------------
+
+[PROJETO]
+Nome: Planilha para elaboração de orçamento — produto de engenharia
+Slug: planilha-orcamento-produto-engenharia
+
+[CONTEXTO]
+Multinacional brasileira.
+
+[ANTES]
+Cada equipe comercial elaborava a sua proposta com critérios e metodologias diferentes. Sem padrão, a precificação de um mesmo projeto podia ter resultados distintos. Novos produtos foram lançados e a planilha anterior ficou defasada.
+
+[AGORA]
+Todo o time comercial passou a seguir a elaboração pela nova planilha, com padronização e possibilidades de personalização de acordo com regras definidas pelo gerente comercial.
+
+[OBSERVACOES]
+Bom case para mostrar padronização, governança comercial e redução de inconsistências.
+
+--------------------------------------------------
+
+[PROJETO]
+Nome: Planilhas de gestão de visitas comerciais
+Slug: planilhas-gestao-visitas-comerciais
+
+[ANTES]
+Processo inexistente.
+
+[AGORA]
+Com um relatório extraído do sistema, as informações passaram a ser compiladas para que o gerente nacional consiga cobrar metas de visitas de cada time e de cada regional.
+
+[OBSERVACOES]
+Case útil para destacar gestão comercial e acompanhamento por região.
+
+--------------------------------------------------
+
+[PROJETO]
+Nome: Painel resumo financeiro — empresa do ramo de plano de saúde
+Slug: painel-resumo-financeiro-plano-saude
+
+[AGORA]
+Planilha integrada ao sistema, com 1 clique para atualização diária de toda a informação necessária ao CEO.
+
+[OBSERVACOES]
+O texto-base não traz um bloco “Antes” explícito. Se quiser, depois você pode complementar esse trecho.
+
+--------------------------------------------------
+
+[PROJETO]
+Nome: Planilha para controle de OS em serviços junto à CEF
+Slug: controle-os-servicos-cef
+
+[ANTES]
+Anotações em caderno.
+
+[AGORA]
+Dashboard com resumo das informações que o dono queria ter: regiões mais importantes, onde priorizar o trabalho, o que foi feito com atraso, faturamento, pendências e visão geral da operação.
+
+[OBSERVACOES]
+Bom case para evidenciar digitalização de processo e tomada de decisão.

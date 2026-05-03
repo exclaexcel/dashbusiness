@@ -1,0 +1,63 @@
+[MARCA]
+Nome: Dash Business
+
+[INSTITUCIONAL]
+Texto:
+Dash Business é uma empresa de consultoria em dados e soluções analíticas, focada em transformar informações em decisões estratégicas. Atuamos no desenvolvimento de soluções personalizadas, combinando análise de dados, automação de processos e inteligência de negócio para reduzir tarefas manuais e repetitivas, aumentar a eficiência e gerar valor real para empresas de qualquer porte e segmento.
+
+[HERO]
+Texto:
+Transformamos dados em decisões estratégicas, reduzindo processos manuais e repetitivos com soluções inteligentes e personalizadas.
+
+[FRASE_DE_APOIO]
+Texto:
+Independentemente da ferramenta, resolvemos o problema.
+
+[EQUIPE]
+Nome: Juliano Neves
+Titulo: Consultor em dados e soluções analíticas
+
+[DESCRICAO_LONGA]
+Juliano Neves é consultor em soluções analíticas e inteligência de negócio, com forte atuação em desenvolvimento de sistemas de apoio à tomada de decisão. Finalista do Campeonato Brasileiro de Excel em 2024 e 2025, possui sólida experiência em análise financeira (FP&A), automação, modelagem de dados e integração com bancos de dados.
+Atua no desenvolvimento de soluções personalizadas que organizam, analisam e transformam dados em informações estratégicas para empresas de diferentes portes e segmentos. Possui ampla experiência em projetos analíticos e automação, sempre com foco em eficiência, clareza e impacto nas decisões.
+É engenheiro civil, com MBA em Gestão Empresarial, e acredita que dados bem estruturados e analisados são fundamentais para uma gestão mais inteligente e sustentável.
+
+[DESCRICAO_CARD]
+Juliano atua como consultor em dados e soluções analíticas, com forte experiência em automação, análise financeira e sistemas de apoio à decisão. Finalista do Campeonato Brasileiro de Excel em 2024 e 2025, desenvolveu dezenas de projetos analíticos para empresas de diferentes segmentos, sempre com foco em gerar valor por meio dos dados.
+
+[DIFERENCIAL_HUMANO]
+Defensor do uso inteligente da tecnologia como meio — e não como fim — para transformar dados em clareza, estratégia e resultados.
+
+--------------------------------------------------
+
+[EQUIPE]
+Nome: Daniely Pinheiro
+Titulo: Consultora em dados, automação e inteligência operacional
+
+[DESCRICAO_LONGA]
+Daniely Pinheiro atua como consultora em dados, automação e inteligência operacional, com foco em transformar informações complexas em soluções claras e estratégicas para a gestão. Possui sólida experiência no desenvolvimento de sistemas analíticos, dashboards e processos automatizados voltados ao apoio à tomada de decisão.
+É formada em Administração e Ciências Contábeis, com pós‑graduação em Controladoria e Finanças Empresariais e Executive MBA em Análises de Dados, unindo visão estratégica, profunda compreensão do negócio e forte capacidade analítica para apoiar empresas na melhoria de controles, eficiência operacional e leitura de resultados.
+Atua no desenvolvimento de soluções personalizadas, sempre priorizando clareza, usabilidade e impacto real nas decisões do negócio.
+
+[DESCRICAO_CARD]
+Daniely Pinheiro é consultora em dados, automação e inteligência operacional, formada em Administração e Ciências Contábeis, com pós‑graduação em Controladoria e Finanças Empresariais e Executive MBA em Análises de Dados. Atua no desenvolvimento de soluções analíticas e dashboards que apoiam a tomada de decisão, com foco em eficiência operacional e clareza estratégica.
+
+[DIFERENCIAL_HUMANO]
+Acredita que dados só fazem sentido quando geram clareza, confiança e decisões melhores.
+
+--------------------------------------------------
+
+[EQUIPE]
+Nome: Roseane Crispim
+Titulo: Consultora nas áreas administrativa, financeira e analítica
+
+[DESCRICAO_LONGA]
+Roseane Crispim atua como consultora nas áreas administrativa, financeira e analítica, com ampla experiência em rotinas operacionais, vendas, atendimento ao cliente e controles de negócio. Possui vivência em diferentes setores, como comércio varejista e atacadista, construção civil e seguradoras, o que lhe proporciona uma visão prática e abrangente dos desafios operacionais das empresas.
+É formada em Ciências Contábeis e Segurança do Trabalho, com Executive MBA em Análise de Dados, unindo conhecimento técnico, organização da informação e visão analítica aplicada ao negócio. Atua na organização e análise de dados, controle de estoques, gestão de compras, acompanhamento de vendas e controle de pagamentos, apoiando a tomada de decisão com informações claras, confiáveis e estruturadas.
+Com perfil comunicativo e foco na qualidade, contribui para o desenvolvimento de soluções que fortalecem processos, controles e a eficiência na gestão.
+
+[DESCRICAO_CARD]
+Roseane atua como consultora nas áreas administrativa e analítica, com sólida experiência em controles operacionais, vendas, estoque e gestão financeira. Com formação em Ciências Contábeis e Segurança do Trabalho e MBA em Análise de Dados em andamento, apoia empresas na organização das informações e na melhoria da eficiência operacional.
+
+[DIFERENCIAL_HUMANO]
+Focada em transformar rotinas operacionais em informações claras para apoiar decisões melhores.
