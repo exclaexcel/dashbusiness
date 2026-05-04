@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Biblioteca de Projetos — Dash Business</title>
-  <meta name="description" content="Biblioteca completa de projetos da Dash Business: dashboards, automação, análise de dados e soluções personalizadas.">
+  <title>Portfólio de Projetos — Dash Business</title>
+  <meta name="description" content="Portfólio completa de projetos da Dash Business: dashboards, automação, análise de dados e soluções personalizadas.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -21,7 +21,7 @@
         <ul class="nav-links">
           <li><a href="../index.html#sobre"         class="nav-link">Sobre</a></li>
           <li><a href="../index.html#especialistas" class="nav-link">Especialistas</a></li>
-          <li><a href="../index.html#portfolio"     class="nav-link active">Portfólio</a></li>
+          <li><a href="index.html"                  class="nav-link active">Portfólio</a></li>
           <li><a href="../index.html#contato"       class="nav-link">Contato</a></li>
         </ul>
         <div class="nav-actions">
@@ -34,25 +34,25 @@
     <div class="nav-mobile" id="nav-mobile">
       <a href="../index.html#sobre">Sobre</a>
       <a href="../index.html#especialistas">Especialistas</a>
-      <a href="../index.html#portfolio" class="active">Portfólio</a>
+      <a href="index.html" class="active">Portfólio</a>
       <a href="../index.html#contato">Contato</a>
     </div>
   </nav>
 
   <main>
 
-    <!-- CABEÇALHO DA BIBLIOTECA -->
-    <section class="biblioteca-hero">
+    <!-- HERO DA BIBLIOTECA -->
+    <div class="page-hero">
       <div class="container">
-        <span class="section-label">Todos os Projetos</span>
-        <h1>Biblioteca de Projetos</h1>
+        <span class="section-label">Portfólio</span>
+        <h1>Portfólio de Projetos</h1>
         <p>Soluções desenvolvidas para diferentes segmentos — dados, automação e inteligência operacional.</p>
         <a href="../index.html" class="btn-ghost">← Voltar para início</a>
       </div>
-    </section>
+    </div>
 
     <!-- PROJETOS -->
-    <section class="biblioteca-content">
+    <section style="padding-top: 0;">
       <div class="container">
 
         <div class="filter-bar fade-in">
@@ -64,7 +64,15 @@
           <button class="filter-btn" data-filter="solucoes-personalizadas">Soluções Personalizadas</button>
         </div>
 
-        <div id="library-grid" class="projects-grid"></div>
+        <div id="library-grid" class="projects-full-grid"></div>
+
+        <div class="confidential-note fade-in">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/>
+            <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+          </svg>
+          Alguns projetos têm informações resumidas por confidencialidade ou acordo com o cliente.
+        </div>
 
       </div>
     </section>

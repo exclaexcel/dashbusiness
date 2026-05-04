@@ -60,7 +60,7 @@ function initScrollAnimations() {
 /* ---------- FEATURED PROJECTS ----------------------------- */
 function initFeaturedProjects() {
   if (typeof renderProjectCards === 'undefined') return;
-  renderProjectCards('featured-projects-grid', { featured: true, contactUrl: '#contato' });
+  renderProjectCards('featured-projects-grid', { featured: true, projectUrl: 'projetos/projeto.html', imgBase: '' });
 }
 
 /* ---------- HERO ENTRANCE ANIMATION ----------------------- */
