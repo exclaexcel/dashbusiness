@@ -313,14 +313,19 @@
         resultsEl.textContent = '[A complementar]';
       }
 
-      /* Outros projetos (sidebar) — 3 excluindo o atual */
-      var otherProjects = DB_PROJECTS.filter(function(p) { return p.id !== projectId; }).slice(0, 3);
+      /* Outros projetos (sidebar) — relacionados primeiro, todos vindos de DB_PROJECTS */
+      var otherProjects = DB_PROJECTS
+        .filter(function(p) { return p.id !== projectId; })
+        .sort(function(a, b) {
+          return (b.category === project.category) - (a.category === project.category);
+        })
+        .slice(0, 3);
       if (otherProjects.length) {
         document.getElementById('other-projects').style.display = '';
         var listEl = document.getElementById('other-projects-list');
         otherProjects.forEach(function(op) {
           var a = document.createElement('a');
-          a.href = 'projeto.html?id=' + op.id;
+          a.href = 'projeto.html?id=' + encodeURIComponent(op.id);
           a.className = 'other-project-card';
           a.innerHTML = '<span class="opc-emoji" aria-hidden="true">' + (op.emoji || '✦') + '</span>'
             + '<span class="opc-info">'

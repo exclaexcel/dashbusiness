@@ -19,7 +19,7 @@ const DB_PROJECTS = [
       'assets/img/projetos/Sistema Integrado de Gestão Clínica (2).jpg',
       'assets/img/projetos/Sistema Integrado de Gestão Clínica (3).jpg'
     ],
-    featured: true,
+    featured: false,
     status: 'available',
     emoji: '🏥',
     tools: ['Excel', 'VBA', 'Microsoft Access'],
@@ -85,7 +85,7 @@ const DB_PROJECTS = [
       'assets/img/projetos/Sistema de Agenda e Confirmação de Consultas (2).jpg',
       'assets/img/projetos/Sistema de Agenda e Confirmação de Consultas (3).jpg'
     ],
-    featured: true,
+    featured: false,
     status: 'available',
     emoji: '📅',
     tools: ['Excel', 'VBA'],
@@ -114,7 +114,7 @@ const DB_PROJECTS = [
     images: [
       'assets/img/projetos/planilha-precificacao-caixas-artesanais.jpg'
     ],
-    featured: true,
+    featured: false,
     status: 'available',
     emoji: '📋',
     tools: ['Excel', 'VBA'],
@@ -146,7 +146,7 @@ const DB_PROJECTS = [
     images: [
       'assets/img/projetos/dashboard-processos-inovacao.jpg'
     ],
-    featured: false,
+    featured: true,
     status: 'available',
     emoji: '📊',
     tools: ['Excel', 'Dashboard'],
@@ -209,7 +209,7 @@ const DB_PROJECTS = [
       'assets/img/projetos/planilha-orcamento-produto-engenharia.jpg'
     ],
     imageRotation: -90,
-    featured: false,
+    featured: true,
     status: 'available',
     emoji: '🏗️',
     tools: ['Excel'],
@@ -303,7 +303,7 @@ const DB_PROJECTS = [
     images: [
       'assets/img/projetos/controle-os-servicos-cef.jpg'
     ],
-    featured: false,
+    featured: true,
     status: 'available',
     emoji: '🏢',
     tools: ['Excel', 'Dashboard'],
@@ -335,6 +335,15 @@ const CATEGORY_LABELS = {
   'solucoes-personalizadas': 'Solução Personalizada'
 };
 
+const CATEGORY_DESCRIPTIONS = {
+  'all': 'Todos os projetos desenvolvidos pela Dash Business, reunindo automação, dashboards, controles operacionais, análise de dados e soluções personalizadas.',
+  'dashboards': 'Projetos focados em transformar informações dispersas em painéis claros para acompanhamento gerencial e tomada de decisão.',
+  'automacao': 'Soluções que reduzem rotinas manuais, aceleram processos repetitivos e aumentam a confiabilidade das entregas.',
+  'analise-dados': 'Projetos de organização, tratamento e leitura de dados para gerar visão prática sobre operação, metas e desempenho.',
+  'controle-operacional': 'Ferramentas para estruturar processos, acompanhar pendências, registrar atividades e dar visibilidade à rotina operacional.',
+  'solucoes-personalizadas': 'Soluções sob medida para regras de negócio específicas, combinando controle, padronização e usabilidade.'
+};
+
 /**
  * Renders project cards into a container element.
  * @param {string} containerId
@@ -342,16 +351,16 @@ const CATEGORY_LABELS = {
  * @param {boolean}     [opts.featured=false]           render only featured projects
  * @param {string}      [opts.filter='all']              category filter
  * @param {number|null} [opts.limit=null]                max cards to render
- * @param {string}      [opts.contactUrl='#contato']     CTA destination fallback (unused when projectUrl is set)
  * @param {string|null} [opts.projectUrl=null]           URL for individual project page; if set, cards link here
  * @param {string}      [opts.imgBase='']                base path prefix for image URLs
+ * @param {string|null} [opts.contextId=null]            optional element to receive category context
  */
 function renderProjectCards(containerId, opts) {
   var container = document.getElementById(containerId);
   if (!container) return;
 
   var o = Object.assign(
-    { featured: false, filter: 'all', limit: null, contactUrl: '#contato', projectUrl: null, imgBase: '' },
+    { featured: false, filter: 'all', limit: null, projectUrl: null, imgBase: '', contextId: null },
     opts
   );
 
@@ -361,23 +370,40 @@ function renderProjectCards(containerId, opts) {
   if (o.limit)            list = list.slice(0, o.limit);
 
   container.innerHTML = list.map(function(p) {
-    return _buildCardHTML(p, o.contactUrl, o.projectUrl, o.imgBase);
+    return _buildCardHTML(p, o.projectUrl, o.imgBase);
   }).join('');
 
+  _renderFilterContext(o.contextId, o.filter, list.length);
   _observeCards(container);
 }
 
 /**
- * Filters already-rendered cards by toggling the .hidden class.
+ * Filters project cards by re-rendering the grid from DB_PROJECTS.
  * @param {string} containerId
  * @param {string} category  'all' or a category key
+ * @param {object} [opts]
  */
-function filterProjectCards(containerId, category) {
-  var container = document.getElementById(containerId);
-  if (!container) return;
-  container.querySelectorAll('.project-card[data-category]').forEach(function(card) {
-    var show = category === 'all' || card.dataset.category === category;
-    card.classList.toggle('hidden', !show);
+function filterProjectCards(containerId, category, opts) {
+  var activeCategory = category || 'all';
+  var o = Object.assign(
+    { buttonsSelector: null, featured: false, projectUrl: null, imgBase: '', contextId: null },
+    opts
+  );
+
+  if (o.buttonsSelector) {
+    document.querySelectorAll(o.buttonsSelector).forEach(function(btn) {
+      var isActive = btn.dataset.filter === activeCategory;
+      btn.classList.toggle('active', isActive);
+      btn.setAttribute('aria-pressed', isActive ? 'true' : 'false');
+    });
+  }
+
+  renderProjectCards(containerId, {
+    featured: o.featured,
+    filter: activeCategory,
+    projectUrl: o.projectUrl,
+    imgBase: o.imgBase,
+    contextId: o.contextId
   });
 }
 
@@ -406,7 +432,7 @@ function _observeCards(container) {
   });
 }
 
-function _buildCardHTML(p, contactUrl, projectUrl, imgBase) {
+function _buildCardHTML(p, projectUrl, imgBase) {
   var typeLabel = CATEGORY_LABELS[p.category] || p.category;
 
   var tagsHtml = p.tags.map(function(tag) {
@@ -419,10 +445,9 @@ function _buildCardHTML(p, contactUrl, projectUrl, imgBase) {
     ? '<img src="' + imgSrc + '" alt="' + p.title + '" loading="lazy">'
     : '<div class="project-card-thumb-placeholder">' + (p.emoji || '✦') + '</div>';
 
-  /* projectUrl tem prioridade sobre contactUrl — "Ver projeto" nunca vai para contato */
-  var href = projectUrl
-    ? projectUrl + '?id=' + p.id
-    : contactUrl;
+  /* "Ver projeto" sempre abre a página individual, nunca contato. */
+  var detailUrl = projectUrl || _getDefaultProjectUrl();
+  var href = detailUrl + '?id=' + encodeURIComponent(p.id);
 
   return '<a class="project-card" href="' + href + '" data-category="' + p.category + '">'
     + '<div class="project-card-thumb">' + thumbHtml + '</div>'
@@ -434,4 +459,26 @@ function _buildCardHTML(p, contactUrl, projectUrl, imgBase) {
     +   '<div class="project-arrow">Ver projeto →</div>'
     + '</div>'
     + '</a>';
+}
+
+function _getDefaultProjectUrl() {
+  var path = window.location.pathname || '';
+  return path.indexOf('/projetos/') !== -1 ? 'projeto.html' : 'projetos/projeto.html';
+}
+
+function _renderFilterContext(contextId, category, count) {
+  if (!contextId) return;
+  var contextEl = document.getElementById(contextId);
+  if (!contextEl) return;
+
+  var activeCategory = category || 'all';
+  var label = activeCategory === 'all'
+    ? 'Todos'
+    : (CATEGORY_LABELS[activeCategory] || activeCategory);
+  var description = CATEGORY_DESCRIPTIONS[activeCategory] || CATEGORY_DESCRIPTIONS.all;
+  var totalText = count === 1 ? '1 projeto encontrado' : count + ' projetos encontrados';
+
+  contextEl.innerHTML = '<span>' + label + '</span>'
+    + '<p>' + description + '</p>'
+    + '<strong>' + totalText + '</strong>';
 }

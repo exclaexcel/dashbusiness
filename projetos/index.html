@@ -56,13 +56,15 @@
       <div class="container">
 
         <div class="filter-bar fade-in">
-          <button class="filter-btn active" data-filter="all">Todos</button>
-          <button class="filter-btn" data-filter="automacao">Automação</button>
-          <button class="filter-btn" data-filter="dashboards">Dashboards</button>
-          <button class="filter-btn" data-filter="controle-operacional">Controle Operacional</button>
-          <button class="filter-btn" data-filter="analise-dados">Análise de Dados</button>
-          <button class="filter-btn" data-filter="solucoes-personalizadas">Soluções Personalizadas</button>
+          <button class="filter-btn active" data-filter="all" aria-pressed="true">Todos</button>
+          <button class="filter-btn" data-filter="automacao" aria-pressed="false">Automação</button>
+          <button class="filter-btn" data-filter="dashboards" aria-pressed="false">Dashboards</button>
+          <button class="filter-btn" data-filter="controle-operacional" aria-pressed="false">Controle Operacional</button>
+          <button class="filter-btn" data-filter="analise-dados" aria-pressed="false">Análise de Dados</button>
+          <button class="filter-btn" data-filter="solucoes-personalizadas" aria-pressed="false">Soluções Personalizadas</button>
         </div>
+
+        <div class="portfolio-filter-context fade-in" id="portfolio-filter-context" aria-live="polite"></div>
 
         <div id="library-grid" class="projects-full-grid"></div>
 
@@ -92,15 +94,16 @@
   <script src="../js/main.js"></script>
   <script>
     document.addEventListener('DOMContentLoaded', function () {
-      renderProjectCards('library-grid', { projectUrl: 'projeto.html', imgBase: '../' });
+      renderProjectCards('library-grid', { projectUrl: 'projeto.html', imgBase: '../', contextId: 'portfolio-filter-context' });
 
       document.querySelectorAll('.filter-btn').forEach(function (btn) {
         btn.addEventListener('click', function () {
-          document.querySelectorAll('.filter-btn').forEach(function (b) {
-            b.classList.remove('active');
+          filterProjectCards('library-grid', btn.dataset.filter, {
+            buttonsSelector: '.filter-btn',
+            projectUrl: 'projeto.html',
+            imgBase: '../',
+            contextId: 'portfolio-filter-context'
           });
-          btn.classList.add('active');
-          filterProjectCards('library-grid', btn.dataset.filter);
         });
       });
     });
