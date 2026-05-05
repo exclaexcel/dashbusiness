@@ -1,12 +1,12 @@
-Quero que você faça a próxima etapa do site da Dash Business com base no estado atual o projeto pessoal localizado em:
+Quero que você faça a próxima etapa do site da DashBusiness com base no estado atual o projeto pessoal localizado em:
 C:\Users\daany\.vscode\Projeto\Repos\Site_Pessoal_Dany
 
-Nesse projeto, quero que você localize a página/estrutura da biblioteca de projetos e use essa base real para recriar a biblioteca no site atual da Dash Business.
+Nesse projeto, quero que você localize a página/estrutura da biblioteca de projetos e use essa base real para recriar a biblioteca no site atual da DashBusiness.
 
 Importante:
 - não usar apenas como inspiração
 - replicar a estrutura, organização visual e experiência da biblioteca
-- adaptar apenas o necessário para o estilo atual da Dash Business
+- adaptar apenas o necessário para o estilo atual da DashBusiness
 
 
 IMPORTANTE:
@@ -20,7 +20,7 @@ IMPORTANTE:
 - Se não estiver editando diretamente, me devolva o plano revisado, a estrutura recomendada e a lista objetiva de arquivos a alterar.
 
 CONTEXTO
-O site atual da Dash Business já possui:
+O site atual da DashBusiness já possui:
 - home com seções como Sobre, Especialistas, Portfólio e Contato
 - seção “Projetos em Destaque” na home
 - botão “Ver biblioteca completa” apontando para projetos/index.html
@@ -35,7 +35,7 @@ PORÉM:
 OBJETIVO
 Quero que você:
 1. Crie a página da Biblioteca de Projetos no mesmo conceito da biblioteca do meu site pessoal.
-2. Mantenha a identidade visual coerente com o site atual da Dash Business.
+2. Mantenha a identidade visual coerente com o site atual da DashBusiness.
 3. Defina e destaque na home apenas os 4 projetos mais fortes comercialmente.
 4. Corrija a navegação dos botões dos projetos.
 5. Garanta a navegação coerente entre:
@@ -158,7 +158,7 @@ Quero um resultado com aparência de consultoria premium:
 - elegante
 - profissional
 - funcional
-- coerente com a Dash Business
+- coerente com a DashBusiness
 - sem excesso visual
 - sem solução mínima ou genérica
 
@@ -185,9 +185,9 @@ Considere as imagens na biblioteca e nas páginas individuais, indicando onde ca
 Use como referência o projeto pessoal localizado em:
 C:\Users\daany\.vscode\Projeto\Repos\Site_Pessoal_Dany
 
-Nesse projeto, quero que você localize a página/estrutura da biblioteca de projetos e use essa base real para recriar a biblioteca no site atual da Dash Business.
+Nesse projeto, quero que você localize a página/estrutura da biblioteca de projetos e use essa base real para recriar a biblioteca no site atual da DashBusiness.
 
 Importante:
 - não usar apenas como inspiração
 - replicar a estrutura, organização visual e experiência da biblioteca
-- adaptar apenas o necessário para o estilo atual da Dash Business
+- adaptar apenas o necessário para o estilo atual da DashBusiness

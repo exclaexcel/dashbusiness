@@ -1,4 +1,4 @@
-Quero que você considere este como o escopo final consolidado do projeto da Dash Business.
+Quero que você considere este como o escopo final consolidado do projeto da DashBusiness.
 
 IMPORTANTE
 - Considere as decisões mais recentes como oficiais.
@@ -43,7 +43,7 @@ projetos/projeto.html
 - grid coerente
 - sem apenas esconder cards de forma solta
 
-7. A página de portfólio deve seguir o conceito visual da referência do meu site pessoal, mas adaptada ao estilo atual da Dash Business.
+7. A página de portfólio deve seguir o conceito visual da referência do meu site pessoal, mas adaptada ao estilo atual da DashBusiness.
 
 8. A página individual deve manter:
 - breadcrumb

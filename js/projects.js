@@ -1,5 +1,5 @@
 /* ============================================================
-   Dash Business — projects.js
+   DashBusiness — projects.js
    Fonte única de dados dos projetos.
    Usado por: index.html (destaques), projetos/index.html (biblioteca),
               projeto.html?id= / projetos/projeto.html?id= conforme a página atual (file:// ou http)
@@ -335,7 +335,7 @@ const CATEGORY_LABELS = {
 };
 
 const CATEGORY_DESCRIPTIONS = {
-  'all': 'Todos os projetos desenvolvidos pela Dash Business, reunindo automação, dashboards, controles operacionais, análise de dados e soluções personalizadas.',
+  'all': 'Todos os projetos desenvolvidos pela DashBusiness, reunindo automação, dashboards, controles operacionais, análise de dados e soluções personalizadas.',
   'dashboards': 'Projetos focados em transformar informações dispersas em painéis claros para acompanhamento gerencial e tomada de decisão.',
   'automacao': 'Soluções que reduzem rotinas manuais, aceleram processos repetitivos e aumentam a confiabilidade das entregas.',
   'analise-dados': 'Projetos de organização, tratamento e leitura de dados para gerar visão prática sobre operação, metas e desempenho.',

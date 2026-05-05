@@ -1,5 +1,5 @@
 /* ============================================================
-   Dash Business — main.js
+   DashBusiness — main.js
    Baseado no portfólio de Dany Pinheiro. Dark mode fixo.
    ============================================================ */
 
@@ -146,7 +146,7 @@ const SPECIALIST_BIOS = {
   daniely: {
     name: 'Daniely Pinheiro',
     title: 'Consultora em dados, automação e inteligência operacional',
-    bio: 'Daniely Pinheiro atua como consultora em dados, automação e inteligência operacional, com foco em transformar informações complexas em soluções claras e estratégicas para a gestão. Possui sólida experiência no desenvolvimento de sistemas analíticos, dashboards e processos automatizados voltados ao apoio à tomada de decisão.\n\nÉ formada em Administração e Ciências Contábeis, com pós-graduação em Controladoria e Finanças Empresariais e Executive MBA em Análises de Dados, unindo visão estratégica, profunda compreensão do negócio e forte capacidade analítica para apoiar empresas na melhoria de controles, eficiência operacional e leitura de resultados.\n\nAtua no desenvolvimento de soluções personalizadas, sempre priorizando clareza, usabilidade e impacto real nas decisões do negócio.',
+    bio: 'Daniely atua como consultora em dados, automação e inteligência operacional, com foco em transformar informações complexas em soluções claras e estratégicas para a gestão. Possui sólida experiência no desenvolvimento de sistemas analíticos, dashboards e processos automatizados voltados ao apoio à tomada de decisão.\n\nÉ formada em Administração e Ciências Contábeis, com pós-graduação em Controladoria e Finanças Empresariais e Executive MBA em Análises de Dados, unindo visão estratégica, profunda compreensão do negócio e forte capacidade analítica para apoiar empresas na melhoria de controles, eficiência operacional e leitura de resultados.\n\nAtua no desenvolvimento de soluções personalizadas, sempre priorizando clareza, usabilidade e impacto real nas decisões do negócio.',
     quote: 'Acredita que dados só fazem sentido quando geram clareza, confiança e decisões melhores.'
   },
   roseane: {
