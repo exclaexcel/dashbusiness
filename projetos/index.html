@@ -94,13 +94,13 @@
   <script src="../js/main.js"></script>
   <script>
     document.addEventListener('DOMContentLoaded', function () {
-      renderProjectCards('library-grid', { projectUrl: 'projeto.html', imgBase: '../', contextId: 'portfolio-filter-context' });
+      renderProjectCards('library-grid', { projectUrl: '/projetos/projeto.html', imgBase: '../', contextId: 'portfolio-filter-context' });
 
       document.querySelectorAll('.filter-btn').forEach(function (btn) {
         btn.addEventListener('click', function () {
           filterProjectCards('library-grid', btn.dataset.filter, {
             buttonsSelector: '.filter-btn',
-            projectUrl: 'projeto.html',
+            projectUrl: '/projetos/projeto.html',
             imgBase: '../',
             contextId: 'portfolio-filter-context'
           });

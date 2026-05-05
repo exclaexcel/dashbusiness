@@ -2,7 +2,7 @@
    Dash Business — projects.js
    Fonte única de dados dos projetos.
    Usado por: index.html (destaques), projetos/index.html (biblioteca),
-              projetos/projeto.html (página individual)
+              /projetos/projeto.html?id= (detalhe — URL absoluta na raiz do site)
    ============================================================ */
 
 const DB_PROJECTS = [
@@ -461,9 +461,9 @@ function _buildCardHTML(p, projectUrl, imgBase) {
     + '</a>';
 }
 
+/** Caminho canônico na raiz do site (funciona na home, em /projetos/ e na Vercel com cleanUrls). */
 function _getDefaultProjectUrl() {
-  var path = window.location.pathname || '';
-  return path.indexOf('/projetos/') !== -1 ? 'projeto.html' : 'projetos/projeto.html';
+  return '/projetos/projeto.html';
 }
 
 function _renderFilterContext(contextId, category, count) {

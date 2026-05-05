@@ -6,6 +6,16 @@
       "source": "/projeto",
       "destination": "/projetos/projeto.html",
       "permanent": false
+    },
+    {
+      "source": "/projeto/",
+      "destination": "/projetos/projeto.html",
+      "permanent": false
+    },
+    {
+      "source": "/projeto.html",
+      "destination": "/projetos/projeto.html",
+      "permanent": false
     }
   ]
 }

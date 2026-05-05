@@ -181,13 +181,13 @@
       var projectId = params.get('id');
 
       if (!projectId) {
-        window.location.href = 'index.html';
+        window.location.href = '/projetos/index.html';
         return;
       }
 
       var project = DB_PROJECTS.find(function(p) { return p.id === projectId; });
       if (!project) {
-        window.location.href = 'index.html';
+        window.location.href = '/projetos/index.html';
         return;
       }
 
@@ -325,7 +325,7 @@
         var listEl = document.getElementById('other-projects-list');
         otherProjects.forEach(function(op) {
           var a = document.createElement('a');
-          a.href = 'projeto.html?id=' + encodeURIComponent(op.id);
+          a.href = '/projetos/projeto.html?id=' + encodeURIComponent(op.id);
           a.className = 'other-project-card';
           a.innerHTML = '<span class="opc-emoji" aria-hidden="true">' + (op.emoji || '✦') + '</span>'
             + '<span class="opc-info">'
