@@ -29,7 +29,7 @@ Depois aceda a `http://localhost:3000` (ou a porta indicada pelo `serve`).
 ## Documentação estendida
 
 - **[Guia de desenvolvimento](docs/GUIA-DESENVOLVIMENTO.md)** — rotas, como adicionar projetos, acessibilidade, CSP, deploy.
-- **`docs/`** — registo histórico em [`docs/IMPLEMENTACAO.md`](docs/IMPLEMENTACAO.md); notas editoriais em [`docs/notas/`](docs/notas/).
+- **`docs/`** — [`guia da marca`](docs/GUIA-DA-MARCA.md), [`guia de desenvolvimento`](docs/GUIA-DESENVOLVIMENTO.md), registo em [`IMPLEMENTACAO.md`](docs/IMPLEMENTACAO.md), notas em [`docs/notas/`](docs/notas/).
 
 ## Deploy
 
