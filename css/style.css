@@ -722,7 +722,16 @@ section { padding: 96px 0; }
   transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.project-card:hover .project-card-thumb img {
+.project-card-thumb img.thumb-with-rotation {
+  transform: rotate(var(--thumb-rot, 0deg));
+  transform-origin: center center;
+}
+
+.project-card:hover .project-card-thumb img.thumb-with-rotation {
+  transform: rotate(var(--thumb-rot, 0deg)) scale(1.04);
+}
+
+.project-card:hover .project-card-thumb img:not(.thumb-with-rotation) {
   transform: scale(1.04);
 }
 

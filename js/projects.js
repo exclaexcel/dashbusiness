@@ -441,8 +441,12 @@ function _buildCardHTML(p, projectUrl, imgBase) {
   }).join('');
 
   var imgSrc = p.image ? (imgBase || '') + p.image : null;
+  var imgAttrs = '';
+  if (p.imageRotation) {
+    imgAttrs = ' class="thumb-with-rotation" style="--thumb-rot:' + p.imageRotation + 'deg"';
+  }
   var thumbHtml = imgSrc
-    ? '<img src="' + imgSrc + '" alt="' + p.title + '" loading="lazy">'
+    ? '<img src="' + imgSrc + '" alt="' + p.title + '" loading="lazy"' + imgAttrs + '>'
     : '<div class="project-card-thumb-placeholder">' + (p.emoji || '✦') + '</div>';
 
   /* "Ver projeto" sempre abre a página individual, nunca contato. */
