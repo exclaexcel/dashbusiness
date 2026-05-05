@@ -1,4 +1,11 @@
 {
   "cleanUrls": true,
-  "trailingSlash": false
+  "trailingSlash": false,
+  "redirects": [
+    {
+      "source": "/projeto",
+      "destination": "/projetos/projeto.html",
+      "permanent": false
+    }
+  ]
 }
