@@ -1,0 +1,27 @@
+Sistema Integrado de Gestão Clínica (sistema-gestao-clinica)
+
+Contexto:
+Clínica médica com operação descentralizada e processos administrativos pouco integrados, com cadastros em papel, faturamento manual e ausência de visibilidade sobre indicadores operacionais. [A complementar: especialidade da clínica: ortopedia - colunas, número de profissionais: acima de 10 médicos + 5 secretárias e porte da operação fluxo diário na clinica e atendimento dos médicos em hospitais.]
+
+Problema:
+A rotina dependia de controles dispersos entre setores, o que dificultava o rastreamento das informações, aumentava a chance de erros no faturamento e reduzia a capacidade de gestão sobre a operação e o desempenho da clínica.
+
+Solução:
+Foi desenvolvida uma solução integrada em Excel, Access e VBA para centralizar os processos críticos da clínica. O sistema reúne cadastro de pacientes, histórico/prontuário, controle de agenda, faturamento com validação automática e painel gerencial com indicadores atualizados.
+
+Resultados:
+A clínica passou a contar com mais controle, organização e rastreabilidade das informações, reduzindo falhas operacionais e melhorando a leitura gerencial da operação. [A complementar: incluir métricas validadas: dashboards integrados com o sistema para validação de todos os atendimentos da clinicas e hospitais em relação aos médicos x faturamento de cada]
+
+Sistema de Agenda e Confirmação de Consultas (sistema-agenda-consultas)
+
+Contexto:
+Clínica com grande volume de atendimentos e operação de agenda conduzida manualmente, com necessidade constante de confirmação de consultas e gerenciamento de encaixes, faltas e horários ociosos. [A complementar: mconsultoria de psicologia.]
+
+Problema:
+A ausência de um processo automatizado aumentava o número de faltas sem aviso, gerava perda de horários e exigia esforço repetitivo da equipe para realizar confirmações manuais e acompanhar a ocupação da agenda.
+
+Solução:
+Foi criada uma solução em Excel e VBA para estruturar o fluxo de confirmação e acompanhamento da agenda, com controle de faltas, categorização dos motivos, visualização da ocupação e alertas para apoiar a equipe na gestão dos horários.
+
+Resultados:
+A clínica passou a contar com mais previsibilidade sobre a agenda, melhor aproveitamento dos horários e redução da dependência de controles manuais. [A complementar: incluir dados objetivos> confirmações 90% mais rápidas e eficientes]

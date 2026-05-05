@@ -1,0 +1,193 @@
+Quero que você faça a próxima etapa do site da Dash Business com base no estado atual o projeto pessoal localizado em:
+C:\Users\daany\.vscode\Projeto\Repos\Site_Pessoal_Dany
+
+Nesse projeto, quero que você localize a página/estrutura da biblioteca de projetos e use essa base real para recriar a biblioteca no site atual da Dash Business.
+
+Importante:
+- não usar apenas como inspiração
+- replicar a estrutura, organização visual e experiência da biblioteca
+- adaptar apenas o necessário para o estilo atual da Dash Business
+
+
+IMPORTANTE:
+- A referência visual/estrutural da biblioteca já foi enviada antes. Quero que ela seja usada como base real, não apenas como inspiração vaga.
+- Não simplifique a biblioteca para um grid genérico.
+- Quero equivalência estrutural com a referência enviada anteriormente.
+- Não reescreva os textos descritivos sem solicitar.
+- Não invente conteúdo novo além do que estiver nos arquivos de referência.
+- Se algum campo estiver faltando, preserve a estrutura e apenas sinalize onde preciso complementar.
+- Se você estiver editando os arquivos diretamente, aplique as alterações necessárias.
+- Se não estiver editando diretamente, me devolva o plano revisado, a estrutura recomendada e a lista objetiva de arquivos a alterar.
+
+CONTEXTO
+O site atual da Dash Business já possui:
+- home com seções como Sobre, Especialistas, Portfólio e Contato
+- seção “Projetos em Destaque” na home
+- botão “Ver biblioteca completa” apontando para projetos/index.html
+- cards/projetos renderizados via js/projects.js
+
+PORÉM:
+- a página da Biblioteca ainda não está pronta no padrão visual/estrutural da referência do meu site pessoal
+- a navegação ainda precisa ser ajustada para incorporar essa biblioteca como parte real da arquitetura do site
+- o botão “Ver projeto” está levando para contato, o que está incorreto deve direcionar para a biblioteca
+- os projetos em destaque da home precisam ser refinados para mostrar os 4 melhores cases com maior apelo de mercado
+
+OBJETIVO
+Quero que você:
+1. Crie a página da Biblioteca de Projetos no mesmo conceito da biblioteca do meu site pessoal.
+2. Mantenha a identidade visual coerente com o site atual da Dash Business.
+3. Defina e destaque na home apenas os 4 projetos mais fortes comercialmente.
+4. Corrija a navegação dos botões dos projetos.
+5. Garanta a navegação coerente entre:
+   - home
+   - biblioteca
+   - projeto individual
+   - contato
+
+ARQUIVOS DE REFERÊNCIA DE CONTEÚDO
+Use como fonte oficial os arquivos .txt do projeto:
+- Basenomes.txt → contém marca, texto institucional, hero, frase de apoio e textos da equipe
+- descriçãonovosprojetos.txt → contém os projetos em formato estruturado, com nome, descrição e base para os cases
+
+Não reescreva esses textos sem solicitar.
+Não invente conteúdo além do que estiver definido nesses arquivos.
+
+BIBLIOTECA DE PROJETOS
+Criar ou ajustar a página da biblioteca em projetos/index.html, seguindo a proposta visual e estrutural da referência do meu site pessoal.
+
+A página da biblioteca deve ter:
+- hero ou topo institucional
+- título da página
+- texto de apoio institucional
+- grid/listagem dos projetos
+- cards clicáveis
+- visual consistente com a home
+- CTA final, se fizer sentido
+- navegação clara para voltar à home ou seguir para contato
+
+NAVEGAÇÃO / MENU
+Ajustar a navegação principal para incorporar “Biblioteca” de forma correta.
+Quero o link “Biblioteca” na navegação desktop e mobile, se fizer sentido dentro da estrutura atual.
+
+A navegação geral deve funcionar assim:
+- Home → Biblioteca
+- Home → Projeto individual
+- Biblioteca → Projeto individual
+- Projeto individual → Biblioteca
+- Home → Contato, apenas em botões próprios de contato
+
+CORREÇÃO OBRIGATÓRIA DOS BOTÕES
+Atualmente, o botão “Ver projeto” está levando para contato, mas isso está incorreto.
+
+Quero que:
+- “Ver projeto” leve sempre para a página individual do projeto correspondente
+- apenas botões como “Falar comigo”, “Conversar comigo” ou equivalentes levem para #contato
+- CTA de portfólio e CTA de contato fiquem claramente separados
+
+Comportamento esperado:
+- Na home: botão “Ver projeto” → abre projetos/projeto-individual.html?id=[slug-do-projeto]
+- Na biblioteca: botão “Ver projeto” → abre a página individual do projeto correspondente
+- Apenas botões de contato devem levar para #contato
+
+PROJETOS QUE DEVEM FICAR EM DESTAQUE NA HOME
+Usar estes 4 projetos como principais destaques da home:
+
+1. Sistema Integrado de Gestão Clínica
+2. Automação do cálculo de comissão de vendas
+3. Sistema de Agenda e Confirmação de Consultas
+4. Solução de precificação / orçamento
+
+CRITÉRIO DOS DESTAQUES
+Esses 4 projetos devem ser priorizados por apresentarem melhor combinação de:
+- clareza para o mercado
+- dor facilmente reconhecível
+- valor percebido
+- ganho operacional
+- redução de trabalho manual
+- apelo comercial
+- demonstração de inteligência de negócio
+
+ORDEM SUGERIDA DOS DESTAQUES NA HOME
+1. Sistema Integrado de Gestão Clínica
+2. Automação do cálculo de comissão de vendas
+3. Sistema de Agenda e Confirmação de Consultas
+4. Solução de precificação / orçamento
+
+PÁGINAS INDIVIDUAIS DOS PROJETOS
+Cada card da home e da biblioteca deve abrir corretamente a página individual do projeto correspondente.
+
+A página individual deve continuar seguindo a lógica já definida:
+- hero do projeto
+- breadcrumb
+- título
+- tipo
+- tags
+- galeria/prints
+- contexto
+- problema
+- solução
+- resultados/KPIs
+- ferramentas
+- CTA final
+- link para voltar à biblioteca
+
+PRINTS DOS PROJETOS
+Considere que tenho prints reais dos projetos e quero que a estrutura permita:
+- imagem principal
+- imagens secundárias
+- descrição do projeto
+- boa apresentação no mobile
+- coerência visual com a identidade do site
+
+ARQUIVOS A AVALIAR / ALTERAR
+Avalie especialmente e altere/crie o que for necessário:
+- index.html
+- projetos/index.html
+- projetos/projeto-individual.html
+- js/projects.js
+- css/style.css
+
+Se necessário, crie também:
+- estrutura de dados para os projetos
+- estilos específicos da biblioteca
+- lógica de navegação entre biblioteca e projeto individual
+
+ESTILO ESPERADO
+Quero um resultado com aparência de consultoria premium:
+- limpo
+- elegante
+- profissional
+- funcional
+- coerente com a Dash Business
+- sem excesso visual
+- sem solução mínima ou genérica
+
+ENTREGA ESPERADA
+Se você estiver editando o projeto diretamente:
+- aplique as alterações necessárias
+
+Se não estiver editando diretamente:
+- me devolva de forma organizada:
+  - plano revisado
+  - arquivos criados
+  - arquivos alterados
+  - estrutura da biblioteca
+  - lógica dos 4 destaques na home
+  - correções de navegação
+  - observações importantes
+  - próximos passos
+
+REGRA FINAL
+Não tratar a biblioteca como detalhe secundário.
+Ela deve existir como página real, completa e coerente com a referência do meu site pessoal.
+Considere as imagens na biblioteca e nas páginas individuais, indicando onde cada uma deve entrar.
+
+Use como referência o projeto pessoal localizado em:
+C:\Users\daany\.vscode\Projeto\Repos\Site_Pessoal_Dany
+
+Nesse projeto, quero que você localize a página/estrutura da biblioteca de projetos e use essa base real para recriar a biblioteca no site atual da Dash Business.
+
+Importante:
+- não usar apenas como inspiração
+- replicar a estrutura, organização visual e experiência da biblioteca
+- adaptar apenas o necessário para o estilo atual da Dash Business

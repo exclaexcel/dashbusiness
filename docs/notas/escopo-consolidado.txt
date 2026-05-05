@@ -1,0 +1,116 @@
+Quero que você considere este como o escopo final consolidado do projeto da Dash Business.
+
+IMPORTANTE
+- Considere as decisões mais recentes como oficiais.
+- Ignore versões antigas que entrem em conflito com este escopo consolidado.
+- Não reescreva os textos-base sem solicitar.
+- Não altere a paleta de cores do site.
+- O foco final deve ser: coerência estrutural, navegação correta, portfólio mais forte comercialmente e refinamento visual do layout.
+
+ESTRUTURA OFICIAL
+O site deve funcionar com esta arquitetura:
+- Home
+- Portfólio em projetos/index.html
+- Página individual em projetos/projeto.html
+
+DECISÕES OFICIAIS
+1. O nome final da página individual é:
+projetos/projeto.html
+
+2. O CTA da home deve ser:
+“Ver portfólio”
+
+3. O botão “Ver projeto”:
+- nunca deve levar para #contato
+- nunca deve gerar /projeto?id=... na raiz
+- deve abrir sempre a página individual correta
+
+4. Rotas corretas:
+- na home: projetos/projeto.html?id=[slug]
+- no portfólio: projeto.html?id=[slug]
+
+5. O projects.js deve ser a fonte única do portfólio, com:
+- DB_PROJECTS
+- CATEGORY_LABELS
+- CATEGORY_DESCRIPTIONS
+- renderProjectCards()
+- filterProjectCards()
+
+6. Os filtros do portfólio precisam funcionar como navegação real, com:
+- estado ativo
+- opção “Todos”
+- contexto da categoria
+- grid coerente
+- sem apenas esconder cards de forma solta
+
+7. A página de portfólio deve seguir o conceito visual da referência do meu site pessoal, mas adaptada ao estilo atual da Dash Business.
+
+8. A página individual deve manter:
+- breadcrumb
+- hero
+- tags
+- galeria
+- contexto
+- problema
+- solução
+- resultados
+- ferramentas
+- CTA final
+- outros projetos
+- lightbox
+
+9. Não alterar a paleta do site.
+Apenas refinar:
+- espaçamento
+- tipografia
+- alinhamento
+- proporção dos cards
+- hover
+- responsividade
+- hierarquia visual
+
+DESTAQUES OFICIAIS DA HOME
+Os 4 projetos em destaque da home devem ser:
+
+1. automacao-calculo-comissao-vendas
+2. controle-os-servicos-cef
+3. dashboard-processos-inovacao
+4. planilha-orcamento-produto-engenharia
+
+Esses projetos prevalecem sobre listas anteriores, porque representam melhor:
+- automação
+- controle operacional
+- dashboards
+- soluções personalizadas
+- apelo comercial mais equilibrado
+
+ORDEM DE EXECUÇÃO
+1. Corrigir rotas e links relativos
+2. Validar projectUrl no main.js e no projects.js
+3. Consolidar DB_PROJECTS
+4. Ajustar os 4 destaques da home
+5. Refinar os filtros e a estrutura do portfólio
+6. Garantir a página individual funcionando corretamente
+7. Fazer refinamento visual final
+8. Validar no navegador e na Vercel
+
+ARQUIVOS A REVISAR
+- index.html
+- projetos/index.html
+- projetos/projeto.html
+- js/main.js
+- js/projects.js
+- css/style.css
+
+ENTREGA ESPERADA
+Se estiver editando o projeto diretamente:
+- aplique as alterações
+
+Se não estiver editando diretamente:
+- me devolva:
+  - o que foi ajustado
+  - quais arquivos foram alterados
+  - como ficou a lógica das rotas
+  - como ficaram os filtros
+  - como ficaram os destaques da home
+  - o que ainda exige validação manual

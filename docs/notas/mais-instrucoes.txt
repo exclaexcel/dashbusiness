@@ -1,0 +1,61 @@
+Quero que você refine a navegação e a organização visual da área de projetos do site da Dash Business, porque ainda existem incoerências na experiência da home e da página de portfólio.
+
+AJUSTES OBRIGATÓRIOS
+
+1. Filtros da página de portfólio
+Hoje, ao clicar nos CTAs ou filtros, os outros projetos apenas somem, mas o comportamento não transmite uma filtragem clara e coerente.
+
+Quero que a experiência de filtro seja melhor organizada, com:
+- estado ativo visível no filtro selecionado
+- opção “Todos”
+- atualização coerente do grid de projetos
+- manutenção de alinhamento e distribuição visual dos cards
+- comportamento que deixe claro para o usuário qual filtro/categoria está ativo
+- possibilidade de exibir título, subtítulo ou contexto da categoria selecionada, se fizer sentido
+- evitar sensação de apenas “esconder os demais projetos” sem contexto visual
+
+O filtro precisa parecer uma navegação real do portfólio, e não apenas uma ocultação simples de cards.
+
+2. Organização dos projetos na home
+A distribuição atual dos projetos na página inicial não está ideal.
+
+Quero que você revise:
+- quais projetos ficam em destaque
+- a ordem dos cards
+- o equilíbrio visual da seção
+- a coerência entre apelo comercial, clareza da dor e variedade das soluções apresentadas
+
+A home deve destacar os projetos mais fortes comercialmente e com melhor leitura para o mercado.
+
+3. Ajuste do CTA
+O texto “Ver biblioteca completa” deve ser substituído por um CTA mais coerente com o site.
+
+Trocar para:
+- “Ver portfólio”
+ou, se fizer mais sentido visualmente,
+- “Ver portfólio completo”
+
+Preferência principal:
+“Ver portfólio”
+
+4. Coerência entre home e portfólio
+Quero que a home e a página de portfólio conversem melhor entre si.
+
+A lógica esperada é:
+- home com destaques bem selecionados
+- portfólio com organização clara por categorias ou filtros
+- navegação intuitiva entre home, portfólio e projeto individual
+
+5. Resultado esperado
+Se você estiver ajustando o projeto diretamente, aplique essas melhorias nos arquivos necessários.
+
+Se não estiver editando diretamente, me devolva:
+- quais ajustes precisam ser feitos
+- quais arquivos devem ser alterados
+- como melhorar a lógica dos filtros
+- como reorganizar melhor os projetos da home
+- como deixar o CTA e a navegação mais coerentes
+
+Importante:
+não quero apenas esconder cards com display none.
+Quero uma experiência de filtro visualmente coerente, com sensação real de organização do portfólio.

@@ -1,1 +1,7 @@
 .vercel
+.cursor/
+.vscode/
+
+# Logos experimentais não referenciados pelo HTML atual
+assets/logo/logoteste1.png
+assets/logo/nova-logo2.png
