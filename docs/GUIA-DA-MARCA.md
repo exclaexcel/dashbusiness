@@ -1,4 +1,4 @@
-# Guia da marca — Dash Business
+# Guia da marca — DashBusiness
 
 Referência editorial e visual para manter uma presença coerente com o que o site instituciona hoje. **Fonte técnica da paleta e tipografia:** variáveis em [`css/style.css`](../css/style.css) (`:root`).
 
@@ -8,7 +8,7 @@ Referência editorial e visual para manter uma presença coerente com o que o si
 
 | Elemento | Definição |
 |----------|-----------|
-| **Nome** | Dash Business |
+| **Nome** | DashBusiness |
 | **Tipo** | Consultoria em **dados** e **inteligência analítica**, com desenvolvimento de soluções personalizadas |
 | **Proposta resumida** | Transformar informações em **decisões estratégicas**, reduzindo processos **manuais e repetitivos** e gerando **valor** para empresas de qualquer porte |
 | **Leit-motiv (frase de apoio)** | **“Independentemente da ferramenta, resolvemos o problema.”** — uso prioritário nos blocos institucional e hero quando fizer sentido |

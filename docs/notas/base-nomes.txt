@@ -1,9 +1,9 @@
 [MARCA]
-Nome: Dash Business
+Nome: DashBusiness
 
 [INSTITUCIONAL]
 Texto:
-Dash Business é uma empresa de consultoria em dados e soluções analíticas, focada em transformar informações em decisões estratégicas. Atuamos no desenvolvimento de soluções personalizadas, combinando análise de dados, automação de processos e inteligência de negócio para reduzir tarefas manuais e repetitivas, aumentar a eficiência e gerar valor real para empresas de qualquer porte e segmento.
+DashBusiness é uma empresa de consultoria em dados e soluções analíticas, focada em transformar informações em decisões estratégicas. Atuamos no desenvolvimento de soluções personalizadas, combinando análise de dados, automação de processos e inteligência de negócio para reduzir tarefas manuais e repetitivas, aumentar a eficiência e gerar valor real para empresas de qualquer porte e segmento.
 
 [HERO]
 Texto:
@@ -35,12 +35,12 @@ Nome: Daniely Pinheiro
 Titulo: Consultora em dados, automação e inteligência operacional
 
 [DESCRICAO_LONGA]
-Daniely Pinheiro atua como consultora em dados, automação e inteligência operacional, com foco em transformar informações complexas em soluções claras e estratégicas para a gestão. Possui sólida experiência no desenvolvimento de sistemas analíticos, dashboards e processos automatizados voltados ao apoio à tomada de decisão.
+Daniely atua como consultora em dados, automação e inteligência operacional, com foco em transformar informações complexas em soluções claras e estratégicas para a gestão. Possui sólida experiência no desenvolvimento de sistemas analíticos, dashboards e processos automatizados voltados ao apoio à tomada de decisão.
 É formada em Administração e Ciências Contábeis, com pós‑graduação em Controladoria e Finanças Empresariais e Executive MBA em Análises de Dados, unindo visão estratégica, profunda compreensão do negócio e forte capacidade analítica para apoiar empresas na melhoria de controles, eficiência operacional e leitura de resultados.
 Atua no desenvolvimento de soluções personalizadas, sempre priorizando clareza, usabilidade e impacto real nas decisões do negócio.
 
 [DESCRICAO_CARD]
-Daniely Pinheiro é consultora em dados, automação e inteligência operacional, formada em Administração e Ciências Contábeis, com pós‑graduação em Controladoria e Finanças Empresariais e Executive MBA em Análises de Dados. Atua no desenvolvimento de soluções analíticas e dashboards que apoiam a tomada de decisão, com foco em eficiência operacional e clareza estratégica.
+Daniely é consultora em dados, automação e inteligência operacional, formada em Administração e Ciências Contábeis, com pós‑graduação em Controladoria e Finanças Empresariais e Executive MBA em Análises de Dados. Atua no desenvolvimento de soluções analíticas e dashboards que apoiam a tomada de decisão, com foco em eficiência operacional e clareza estratégica.
 
 [DIFERENCIAL_HUMANO]
 Acredita que dados só fazem sentido quando geram clareza, confiança e decisões melhores.

@@ -1,4 +1,4 @@
-# Guia de desenvolvimento — Dash Business
+# Guia de desenvolvimento — DashBusiness
 
 Documentação técnica para quem mantém ou evolui o site.
 

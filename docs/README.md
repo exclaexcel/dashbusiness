@@ -1,4 +1,4 @@
-# Documentação — Dash Business
+# Documentação — DashBusiness
 
 - **[Guia da marca](GUIA-DA-MARCA.md)** — posicionamento, tom de voz, paleta, tipografia e uso do logo.
 - **[Guia de desenvolvimento](GUIA-DESENVOLVIMENTO.md)** — manutenção do site: rotas, projetos (`projects.js`), acessibilidade, CSP, SEO, deploy.

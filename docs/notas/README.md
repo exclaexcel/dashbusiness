@@ -4,7 +4,7 @@ Estes ficheiros não são utilizados pela build nem pelo deploy; são **referên
 
 | Ficheiro | Descrição |
 |----------|-----------|
-| `escopo-consolidado.txt` | Escopo/decisões oficiais do projeto Dash Business |
+| `escopo-consolidado.txt` | Escopo/decisões oficiais do projeto DashBusiness |
 | `base-nomes.txt` | Textos base (hero, institucional, especialistas — origem dos blocos marcados no site) |
 | `dashbusiness-contexto.txt` | Contexto e referências sobre a marca/proposta |
 | `descricao-novos-projetos.txt` | Rascunhos de descrição de projetos |

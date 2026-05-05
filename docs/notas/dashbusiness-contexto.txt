@@ -1,16 +1,16 @@
-# Dash Business
+# DashBusiness
 
-Site institucional da **Dash Business**, desenvolvido em **HTML, CSS e JavaScript**, com foco em apresentar a empresa, os especialistas e o portfólio de projetos de forma clara, moderna e profissional.
+Site institucional da **DashBusiness**, desenvolvido em **HTML, CSS e JavaScript**, com foco em apresentar a empresa, os especialistas e o portfólio de projetos de forma clara, moderna e profissional.
 
 ## Sobre o projeto
 
-A **Dash Business** é uma empresa de consultoria em dados e soluções analíticas, focada em transformar informações em decisões estratégicas. Atuamos no desenvolvimento de soluções personalizadas que ajudam empresas a organizar dados, reduzir trabalhos manuais e repetitivos e gerar mais eficiência na rotina, criando valor real para negócios de qualquer porte e segmento.
+A **DashBusiness** é uma empresa de consultoria em dados e soluções analíticas, focada em transformar informações em decisões estratégicas. Atuamos no desenvolvimento de soluções personalizadas que ajudam empresas a organizar dados, reduzir trabalhos manuais e repetitivos e gerar mais eficiência na rotina, criando valor real para negócios de qualquer porte e segmento.
 
 Este projeto tem como objetivo criar uma presença digital institucional com visual moderno, identidade forte e estrutura preparada para crescimento futuro.
 
 ## Objetivos do site
 
-- Apresentar a **Dash Business** de forma institucional e profissional
+- Apresentar a **DashBusiness** de forma institucional e profissional
 - Destacar o papel e a especialidade de cada consultor
 - Exibir o portfólio como uma **biblioteca de projetos**
 - Reforçar o posicionamento da empresa como consultoria orientada a dados, eficiência e tomada de decisão
@@ -21,7 +21,7 @@ Este projeto tem como objetivo criar uma presença digital institucional com vis
 O site foi planejado como uma **one page**, com navegação fluida entre as seções:
 
 - **Hero**  
-  Apresentação principal da Dash Business
+  Apresentação principal da DashBusiness
 
 - **Sobre**  
   Visão geral da empresa e proposta de valor
@@ -141,5 +141,5 @@ Revisar conteúdo final antes da publicação
 Status do projeto
 🚧 Em desenvolvimento
 
-Dash Business
+DashBusiness
 Dados, estratégia e eficiência para decisões melhores.

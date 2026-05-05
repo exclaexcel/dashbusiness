@@ -1,6 +1,6 @@
-# Dash Business — Site institucional e portfólio
+# DashBusiness — Site institucional e portfólio
 
-Site estático (**HTML**, **CSS**, **JavaScript**) da Dash Business: home, biblioteca de projetos e páginas de detalhe com galeria e lightbox. Deploy habitual na **Vercel**.
+Site estático (**HTML**, **CSS**, **JavaScript**) da DashBusiness: home, biblioteca de projetos e páginas de detalhe com galeria e lightbox. Deploy habitual na **Vercel**.
 
 ## Como ver localmente
 
