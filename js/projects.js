@@ -375,6 +375,7 @@ function renderProjectCards(containerId, opts) {
 
   _renderFilterContext(o.contextId, o.filter, list.length);
   _observeCards(container);
+  _bindPortfolioLightbox(container, o.imgBase);
 }
 
 /**
@@ -445,16 +446,23 @@ function _buildCardHTML(p, projectUrl, imgBase) {
   if (p.imageRotation) {
     imgAttrs = ' class="thumb-with-rotation" style="--thumb-rot:' + p.imageRotation + 'deg"';
   }
-  var thumbHtml = imgSrc
-    ? '<img src="' + imgSrc + '" alt="' + p.title + '" loading="lazy"' + imgAttrs + '>'
-    : '<div class="project-card-thumb-placeholder">' + (p.emoji || '✦') + '</div>';
+
+  var thumbInner = '';
+  if (imgSrc) {
+    thumbInner =
+      '<button type="button" class="project-card-zoom-btn" aria-label="Ampliar imagens do projeto"></button>'
+      + '<img src="' + imgSrc + '" alt="' + p.title + '" loading="lazy"' + imgAttrs + '>';
+  } else {
+    thumbInner = '<div class="project-card-thumb-placeholder">' + (p.emoji || '✦') + '</div>';
+  }
 
   /* "Ver projeto" sempre abre a página individual, nunca contato. */
   var detailUrl = projectUrl || _getDefaultProjectUrl();
   var href = detailUrl + '?id=' + encodeURIComponent(p.id);
 
-  return '<a class="project-card" href="' + href + '" data-category="' + p.category + '">'
-    + '<div class="project-card-thumb">' + thumbHtml + '</div>'
+  return '<div class="project-card" data-category="' + p.category + '" data-project-id="' + p.id + '">'
+    + '<div class="project-card-thumb">' + thumbInner + '</div>'
+    + '<a class="project-card-link" href="' + href + '">'
     + '<div class="project-card-body">'
     +   '<span class="project-type">' + typeLabel + '</span>'
     +   '<h3>' + p.title + '</h3>'
@@ -462,7 +470,8 @@ function _buildCardHTML(p, projectUrl, imgBase) {
     +   '<div class="card-context">' + tagsHtml + '</div>'
     +   '<div class="project-arrow">Ver projeto →</div>'
     + '</div>'
-    + '</a>';
+    + '</a>'
+    + '</div>';
 }
 
 /** Caminho canônico na raiz do site (funciona na home, em /projetos/ e na Vercel com cleanUrls). */
@@ -485,4 +494,141 @@ function _renderFilterContext(contextId, category, count) {
   contextEl.innerHTML = '<span>' + label + '</span>'
     + '<p>' + description + '</p>'
     + '<strong>' + totalText + '</strong>';
+}
+
+/* ---------- Lightbox nas grades (home + biblioteca) — mesmo padrão da página de projeto ---------- */
+
+var _plbImages = [];
+var _plbIndex = 0;
+var _plbRotation = 0;
+var _plbBase = '';
+var _plbTitle = '';
+var _portfolioLbKeyBound = false;
+
+function ensurePortfolioLightbox() {
+  if (document.getElementById('portfolio-global-lightbox')) return;
+
+  var wrap = document.createElement('div');
+  wrap.id = 'portfolio-global-lightbox';
+  wrap.className = 'lightbox';
+  wrap.setAttribute('role', 'dialog');
+  wrap.setAttribute('aria-modal', 'true');
+  wrap.setAttribute('aria-label', 'Visualização ampliada');
+  wrap.innerHTML =
+    '<button type="button" class="lightbox-close portfolio-lb-close" aria-label="Fechar">✕</button>'
+    + '<button type="button" class="lightbox-nav prev portfolio-lb-prev" aria-label="Anterior">‹</button>'
+    + '<img id="portfolio-lb-img" class="lightbox-img" src="" alt="">'
+    + '<button type="button" class="lightbox-nav next portfolio-lb-next" aria-label="Próxima">›</button>'
+    + '<div id="portfolio-lb-dots" class="lightbox-dots"></div>';
+
+  document.body.appendChild(wrap);
+
+  wrap.addEventListener('click', function(e) {
+    if (e.target === wrap) closePortfolioLightbox();
+  });
+  wrap.querySelector('.portfolio-lb-close').addEventListener('click', function(e) {
+    e.stopPropagation();
+    closePortfolioLightbox();
+  });
+  wrap.querySelector('.portfolio-lb-prev').addEventListener('click', function(e) {
+    e.stopPropagation();
+    portfolioLightboxNav(-1);
+  });
+  wrap.querySelector('.portfolio-lb-next').addEventListener('click', function(e) {
+    e.stopPropagation();
+    portfolioLightboxNav(1);
+  });
+
+  if (!_portfolioLbKeyBound) {
+    document.addEventListener('keydown', portfolioLightboxOnKeydown);
+    _portfolioLbKeyBound = true;
+  }
+}
+
+function portfolioLightboxOnKeydown(e) {
+  var lb = document.getElementById('portfolio-global-lightbox');
+  if (!lb || !lb.classList.contains('open')) return;
+  if (e.key === 'Escape') closePortfolioLightbox();
+  if (e.key === 'ArrowLeft') portfolioLightboxNav(-1);
+  if (e.key === 'ArrowRight') portfolioLightboxNav(1);
+}
+
+function openPortfolioLightbox(project, imgBase) {
+  var imgs = project.images && project.images.length
+    ? project.images.slice()
+    : (project.image ? [project.image] : []);
+  if (!imgs.length) return;
+
+  _plbImages = imgs;
+  _plbIndex = 0;
+  _plbRotation = project.imageRotation || 0;
+  _plbBase = imgBase || '';
+  _plbTitle = project.title || 'Projeto';
+
+  ensurePortfolioLightbox();
+  renderPortfolioLightbox();
+  document.getElementById('portfolio-global-lightbox').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function closePortfolioLightbox() {
+  var lb = document.getElementById('portfolio-global-lightbox');
+  if (lb) lb.classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+function portfolioLightboxNav(dir) {
+  if (!_plbImages.length) return;
+  _plbIndex = (_plbIndex + dir + _plbImages.length) % _plbImages.length;
+  renderPortfolioLightbox();
+}
+
+function renderPortfolioLightbox() {
+  var lb = document.getElementById('portfolio-global-lightbox');
+  if (!lb) return;
+
+  var lbImg = document.getElementById('portfolio-lb-img');
+  lbImg.src = _plbBase + _plbImages[_plbIndex];
+  lbImg.alt = (_plbTitle || 'Projeto') + ' — imagem ' + (_plbIndex + 1);
+  lbImg.style.transform = _plbRotation ? 'rotate(' + _plbRotation + 'deg)' : '';
+
+  var many = _plbImages.length > 1;
+  lb.querySelector('.portfolio-lb-prev').style.display = many ? '' : 'none';
+  lb.querySelector('.portfolio-lb-next').style.display = many ? '' : 'none';
+
+  var dotsEl = document.getElementById('portfolio-lb-dots');
+  dotsEl.innerHTML = '';
+  if (many) {
+    _plbImages.forEach(function(_, i) {
+      var btn = document.createElement('button');
+      btn.type = 'button';
+      btn.className = 'lb-dot' + (i === _plbIndex ? ' active' : '');
+      btn.setAttribute('aria-label', 'Imagem ' + (i + 1));
+      btn.addEventListener('click', function(ev) {
+        ev.stopPropagation();
+        _plbIndex = i;
+        renderPortfolioLightbox();
+      });
+      dotsEl.appendChild(btn);
+    });
+  }
+}
+
+function _bindPortfolioLightbox(container, imgBase) {
+  ensurePortfolioLightbox();
+
+  container.querySelectorAll('.project-card[data-project-id]').forEach(function(card) {
+    var zoomBtn = card.querySelector('.project-card-zoom-btn');
+    if (!zoomBtn) return;
+
+    var id = card.getAttribute('data-project-id');
+    var project = DB_PROJECTS.find(function(p) { return p.id === id; });
+    if (!project) return;
+
+    zoomBtn.addEventListener('click', function(e) {
+      e.preventDefault();
+      e.stopPropagation();
+      openPortfolioLightbox(project, imgBase);
+    });
+  });
 }
