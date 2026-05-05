@@ -2,7 +2,7 @@
    Dash Business — projects.js
    Fonte única de dados dos projetos.
    Usado por: index.html (destaques), projetos/index.html (biblioteca),
-              /projetos/projeto.html?id= (detalhe — URL absoluta na raiz do site)
+              projeto.html?id= / projetos/projeto.html?id= conforme a página atual (file:// ou http)
    ============================================================ */
 
 const DB_PROJECTS = [
@@ -55,8 +55,8 @@ const DB_PROJECTS = [
     status: 'available',
     emoji: '⚡',
     tools: ['Excel', 'VBA', 'Dashboard'],
-    contextNote: '[A complementar]',
-    context: '[A complementar]',
+    contextNote: '',
+    context: '',
     before: '1 diretor e 1 assistente levavam 3 dias por mês em um processo lento e sujeito a erros.',
     after: '10 minutos, 1 clique, tudo pronto, calculado, com dashboard para análises e email enviado com a prestação de contas para cada representante.',
     notes: 'Case de automação + redução de trabalho manual + ganho de tempo + confiabilidade.',
@@ -118,8 +118,8 @@ const DB_PROJECTS = [
     status: 'available',
     emoji: '📋',
     tools: ['Excel', 'VBA'],
-    contextNote: '[A complementar]',
-    context: '[A complementar]',
+    contextNote: '',
+    context: '',
     before: 'Processo muito manual e sujeito a erros. Centralizado em apenas uma pessoa (a CEO). Por conta da alta demanda e outras responsabilidades, demorava até uma semana para envio da proposta.',
     after: 'A elaboração foi delegada para a equipe. Orçamento instantâneo, com geração das propostas pela própria planilha e envio imediato ao cliente. Projeto com regras de negócio complexas para a precificação e várias peculiaridades, todas atendidas pela nova planilha.',
     notes: 'Ótimo case para mostrar escalabilidade, delegação e agilidade comercial.',
@@ -150,8 +150,8 @@ const DB_PROJECTS = [
     status: 'available',
     emoji: '📊',
     tools: ['Excel', 'Dashboard'],
-    contextNote: '[A complementar]',
-    context: '[A complementar]',
+    contextNote: '',
+    context: '',
     before: 'Processo inexistente.',
     after: 'Funil de vendas, follow-up de propostas e dashboard para acompanhamento gerencial.',
     notes: 'Case interessante para mostrar estruturação de processo e visibilidade gerencial.',
@@ -208,7 +208,6 @@ const DB_PROJECTS = [
     images: [
       'assets/img/projetos/planilha-orcamento-produto-engenharia.jpg'
     ],
-    imageRotation: -90,
     featured: true,
     status: 'available',
     emoji: '🏗️',
@@ -245,8 +244,8 @@ const DB_PROJECTS = [
     status: 'available',
     emoji: '🗺️',
     tools: ['Excel', 'Power Query'],
-    contextNote: '[A complementar]',
-    context: '[A complementar]',
+    contextNote: '',
+    context: '',
     before: 'Processo inexistente.',
     after: 'Com um relatório extraído do sistema, as informações passaram a ser compiladas para que o gerente nacional consiga cobrar metas de visitas de cada time e de cada regional.',
     notes: 'Case útil para destacar gestão comercial e acompanhamento por região.',
@@ -281,7 +280,7 @@ const DB_PROJECTS = [
     before: null,
     after: 'Planilha integrada ao sistema, com 1 clique para atualização diária de toda a informação necessária ao CEO.',
     notes: 'O texto-base não traz um bloco "Antes" explícito — a complementar se necessário.',
-    problem: '[A complementar]',
+    problem: '',
     solutionList: [
       'Planilha integrada ao sistema da empresa.',
       'Atualização diária de todas as informações financeiras com 1 clique.',
@@ -410,7 +409,21 @@ function filterProjectCards(containerId, category, opts) {
 
 /* --- internals ------------------------------------------------ */
 
+function _escapeHtml(s) {
+  return String(s)
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;');
+}
+
 function _observeCards(container) {
+  if (typeof document !== 'undefined' && document.documentElement.classList.contains('reduce-motion')) {
+    container.querySelectorAll('.project-card').forEach(function(c) {
+      c.classList.add('visible');
+    });
+    return;
+  }
   if (typeof IntersectionObserver === 'undefined') {
     container.querySelectorAll('.project-card').forEach(function(c) {
       c.classList.add('visible');
@@ -434,11 +447,11 @@ function _observeCards(container) {
 }
 
 function _buildCardHTML(p, projectUrl, imgBase) {
-  var typeLabel = CATEGORY_LABELS[p.category] || p.category;
+  var typeLabel = _escapeHtml(CATEGORY_LABELS[p.category] || p.category);
 
   var tagsHtml = p.tags.map(function(tag) {
     var cls = p.status === 'confidential' ? 'card-ctx-tag confidential' : 'card-ctx-tag';
-    return '<span class="' + cls + '">' + tag + '</span>';
+    return '<span class="' + cls + '">' + _escapeHtml(tag) + '</span>';
   }).join('');
 
   var imgSrc = p.image ? (imgBase || '') + p.image : null;
@@ -451,22 +464,22 @@ function _buildCardHTML(p, projectUrl, imgBase) {
   if (imgSrc) {
     thumbInner =
       '<button type="button" class="project-card-zoom-btn" aria-label="Ampliar imagens do projeto"></button>'
-      + '<img src="' + imgSrc + '" alt="' + p.title + '" loading="lazy"' + imgAttrs + '>';
+      + '<img src="' + _escapeHtml(imgSrc) + '" alt="' + _escapeHtml(p.title) + '" loading="lazy"' + imgAttrs + '>';
   } else {
-    thumbInner = '<div class="project-card-thumb-placeholder">' + (p.emoji || '✦') + '</div>';
+    thumbInner = '<div class="project-card-thumb-placeholder">' + _escapeHtml(p.emoji || '✦') + '</div>';
   }
 
   /* "Ver projeto" sempre abre a página individual, nunca contato. */
   var detailUrl = projectUrl || _getDefaultProjectUrl();
   var href = detailUrl + '?id=' + encodeURIComponent(p.id);
 
-  return '<div class="project-card" data-category="' + p.category + '" data-project-id="' + p.id + '">'
+  return '<div class="project-card" data-category="' + _escapeHtml(p.category) + '" data-project-id="' + _escapeHtml(p.id) + '">'
     + '<div class="project-card-thumb">' + thumbInner + '</div>'
     + '<a class="project-card-link" href="' + href + '">'
     + '<div class="project-card-body">'
     +   '<span class="project-type">' + typeLabel + '</span>'
-    +   '<h3>' + p.title + '</h3>'
-    +   '<p>' + p.description + '</p>'
+    +   '<h3>' + _escapeHtml(p.title) + '</h3>'
+    +   '<p>' + _escapeHtml(p.description) + '</p>'
     +   '<div class="card-context">' + tagsHtml + '</div>'
     +   '<div class="project-arrow">Ver projeto →</div>'
     + '</div>'
@@ -474,9 +487,13 @@ function _buildCardHTML(p, projectUrl, imgBase) {
     + '</div>';
 }
 
-/** Caminho canônico na raiz do site (funciona na home, em /projetos/ e na Vercel com cleanUrls). */
+/** Caminho da página de detalhe: relativo ao arquivo atual (funciona em file:// e na Vercel). */
 function _getDefaultProjectUrl() {
-  return '/projetos/projeto.html';
+  var p = (window.location.pathname || '').replace(/\\/g, '/');
+  if (/\/projetos(\/|$)/i.test(p)) {
+    return 'projeto.html';
+  }
+  return 'projetos/projeto.html';
 }
 
 function _renderFilterContext(contextId, category, count) {
@@ -491,9 +508,9 @@ function _renderFilterContext(contextId, category, count) {
   var description = CATEGORY_DESCRIPTIONS[activeCategory] || CATEGORY_DESCRIPTIONS.all;
   var totalText = count === 1 ? '1 projeto encontrado' : count + ' projetos encontrados';
 
-  contextEl.innerHTML = '<span>' + label + '</span>'
-    + '<p>' + description + '</p>'
-    + '<strong>' + totalText + '</strong>';
+  contextEl.innerHTML = '<span>' + _escapeHtml(label) + '</span>'
+    + '<p>' + _escapeHtml(description) + '</p>'
+    + '<strong>' + _escapeHtml(totalText) + '</strong>';
 }
 
 /* ---------- Lightbox nas grades (home + biblioteca) — mesmo padrão da página de projeto ---------- */
@@ -504,6 +521,7 @@ var _plbRotation = 0;
 var _plbBase = '';
 var _plbTitle = '';
 var _portfolioLbKeyBound = false;
+var _plbFocusPrev = null;
 
 function ensurePortfolioLightbox() {
   if (document.getElementById('portfolio-global-lightbox')) return;
@@ -551,6 +569,27 @@ function portfolioLightboxOnKeydown(e) {
   if (e.key === 'Escape') closePortfolioLightbox();
   if (e.key === 'ArrowLeft') portfolioLightboxNav(-1);
   if (e.key === 'ArrowRight') portfolioLightboxNav(1);
+  if (e.key !== 'Tab') return;
+  var sel = 'button:not([disabled])';
+  var nodes = Array.prototype.slice.call(lb.querySelectorAll(sel)).filter(function(el) {
+    return el.offsetParent !== null || el.getClientRects().length > 0;
+  });
+  if (nodes.length < 2) {
+    if (nodes.length === 1) {
+      e.preventDefault();
+      nodes[0].focus();
+    }
+    return;
+  }
+  var first = nodes[0];
+  var last = nodes[nodes.length - 1];
+  if (e.shiftKey && document.activeElement === first) {
+    e.preventDefault();
+    last.focus();
+  } else if (!e.shiftKey && document.activeElement === last) {
+    e.preventDefault();
+    first.focus();
+  }
 }
 
 function openPortfolioLightbox(project, imgBase) {
@@ -567,14 +606,25 @@ function openPortfolioLightbox(project, imgBase) {
 
   ensurePortfolioLightbox();
   renderPortfolioLightbox();
-  document.getElementById('portfolio-global-lightbox').classList.add('open');
+  _plbFocusPrev = document.activeElement;
+  var lbEl = document.getElementById('portfolio-global-lightbox');
+  lbEl.classList.add('open');
   document.body.style.overflow = 'hidden';
+  var closeBtn = lbEl.querySelector('.portfolio-lb-close');
+  requestAnimationFrame(function() {
+    if (closeBtn) closeBtn.focus();
+  });
 }
 
 function closePortfolioLightbox() {
   var lb = document.getElementById('portfolio-global-lightbox');
   if (lb) lb.classList.remove('open');
   document.body.style.overflow = '';
+  var prev = _plbFocusPrev;
+  _plbFocusPrev = null;
+  if (prev && typeof prev.focus === 'function') {
+    requestAnimationFrame(function() { prev.focus(); });
+  }
 }
 
 function portfolioLightboxNav(dir) {

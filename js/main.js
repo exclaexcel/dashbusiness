@@ -3,11 +3,30 @@
    Baseado no portfólio de Dany Pinheiro. Dark mode fixo.
    ============================================================ */
 
+function escapeHtml(str) {
+  return String(str)
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;');
+}
+
+function smoothScrollBehavior() {
+  return document.documentElement.classList.contains('reduce-motion') ? 'auto' : 'smooth';
+}
+
 /* ---------- NAV ------------------------------------------- */
 function initNav() {
   const navbar    = document.getElementById('navbar');
   const hamburger = document.getElementById('nav-hamburger');
   const mobile    = document.getElementById('nav-mobile');
+
+  function setMobileOpen(isOpen) {
+    if (!mobile || !hamburger) return;
+    mobile.classList.toggle('open', isOpen);
+    hamburger.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+    hamburger.setAttribute('aria-label', isOpen ? 'Fechar menu' : 'Abrir menu');
+  }
 
   if (navbar) {
     window.addEventListener('scroll', () => {
@@ -16,9 +35,16 @@ function initNav() {
   }
 
   if (hamburger && mobile) {
-    hamburger.addEventListener('click', () => mobile.classList.toggle('open'));
+    hamburger.setAttribute('aria-expanded', 'false');
+    hamburger.addEventListener('click', () => {
+      setMobileOpen(!mobile.classList.contains('open'));
+    });
     mobile.querySelectorAll('a').forEach(a => {
-      a.addEventListener('click', () => mobile.classList.remove('open'));
+      a.addEventListener('click', () => setMobileOpen(false));
+    });
+    document.addEventListener('keydown', (e) => {
+      if (e.key !== 'Escape' || !mobile.classList.contains('open')) return;
+      setMobileOpen(false);
     });
   }
 }
@@ -43,6 +69,10 @@ function initNavActiveScroll() {
 /* ---------- SCROLL ANIMATIONS ----------------------------- */
 function initScrollAnimations() {
   const targets = document.querySelectorAll('.fade-in');
+  if (document.documentElement.classList.contains('reduce-motion')) {
+    targets.forEach(t => t.classList.add('visible'));
+    return;
+  }
   const observer = new IntersectionObserver(entries => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
@@ -60,11 +90,12 @@ function initScrollAnimations() {
 /* ---------- FEATURED PROJECTS ----------------------------- */
 function initFeaturedProjects() {
   if (typeof renderProjectCards === 'undefined') return;
-  renderProjectCards('featured-projects-grid', { featured: true, projectUrl: '/projetos/projeto.html', imgBase: '' });
+  renderProjectCards('featured-projects-grid', { featured: true, limit: 4, imgBase: '' });
 }
 
 /* ---------- HERO ENTRANCE ANIMATION ----------------------- */
 function initHeroAnimation() {
+  if (document.documentElement.classList.contains('reduce-motion')) return;
   const items = document.querySelectorAll(
     '.hero-greeting, .hero-name, .hero-title, .hero-phrase, .hero-ctas, .hero-visual-wrap'
   );
@@ -83,8 +114,15 @@ function initHeroAnimation() {
 function initSmoothScroll() {
   document.querySelectorAll('a[href^="#"]').forEach(a => {
     a.addEventListener('click', e => {
-      const target = document.querySelector(a.getAttribute('href'));
-      if (target) { e.preventDefault(); target.scrollIntoView({ behavior: 'smooth' }); }
+      const sel = a.getAttribute('href');
+      const target = document.querySelector(sel);
+      if (target) {
+        e.preventDefault();
+        target.scrollIntoView({ behavior: smoothScrollBehavior() });
+        if (sel === '#main-content' && target.getAttribute('tabindex') === '-1') {
+          target.focus({ preventScroll: true });
+        }
+      }
     });
   });
 }
@@ -94,7 +132,7 @@ function initBackToTop() {
   const btn = document.getElementById('back-to-top');
   if (!btn) return;
   window.addEventListener('scroll', () => btn.classList.toggle('visible', window.scrollY > 400));
-  btn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+  btn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: smoothScrollBehavior() }));
 }
 
 /* ---------- SPECIALIST BIO MODAL ----------------------------- */
@@ -135,18 +173,59 @@ function initSpecialistBios() {
   });
 }
 
+let _bioModalEscapeBound = false;
+let _bioModalLastFocus = null;
+
+function bioModalOnEscape(e) {
+  if (e.key !== 'Escape') return;
+  const modal = document.getElementById('bio-modal');
+  if (modal && modal.classList.contains('open')) closeBioModal();
+}
+
+function bioModalOnKeydown(e) {
+  const modal = document.getElementById('bio-modal');
+  if (!modal || !modal.classList.contains('open') || e.key !== 'Tab') return;
+  const sel = 'button:not([disabled]), [href], input, select, textarea, [tabindex]:not([tabindex="-1"])';
+  const nodes = [...modal.querySelectorAll(sel)].filter(el => el.offsetParent !== null || el === document.activeElement);
+  if (nodes.length < 2) {
+    e.preventDefault();
+    const only = nodes[0] || modal.querySelector('.bio-modal-close');
+    if (only) only.focus();
+    return;
+  }
+  const first = nodes[0];
+  const last = nodes[nodes.length - 1];
+  if (e.shiftKey && document.activeElement === first) {
+    e.preventDefault();
+    last.focus();
+  } else if (!e.shiftKey && document.activeElement === last) {
+    e.preventDefault();
+    first.focus();
+  }
+}
+
+function ensureBioModalEscape() {
+  if (_bioModalEscapeBound) return;
+  document.addEventListener('keydown', bioModalOnEscape);
+  _bioModalEscapeBound = true;
+}
+
 function openBioModal(bio) {
+  ensureBioModalEscape();
   let modal = document.getElementById('bio-modal');
   if (!modal) {
     modal = document.createElement('div');
     modal.id = 'bio-modal';
     modal.className = 'bio-modal';
+    modal.setAttribute('role', 'dialog');
+    modal.setAttribute('aria-modal', 'true');
+    modal.setAttribute('aria-labelledby', 'bio-modal-name');
     modal.innerHTML = `
       <div class="bio-modal-backdrop"></div>
       <div class="bio-modal-content">
-        <button class="bio-modal-close" aria-label="Fechar">&times;</button>
+        <button type="button" class="bio-modal-close" aria-label="Fechar">&times;</button>
         <div class="bio-modal-body">
-          <h3 class="bio-modal-name"></h3>
+          <h3 id="bio-modal-name" class="bio-modal-name"></h3>
           <p class="bio-modal-title"></p>
           <div class="bio-modal-text"></div>
           <blockquote class="bio-modal-quote"></blockquote>
@@ -157,27 +236,39 @@ function openBioModal(bio) {
 
     modal.querySelector('.bio-modal-close').addEventListener('click', closeBioModal);
     modal.querySelector('.bio-modal-backdrop').addEventListener('click', closeBioModal);
+    modal.addEventListener('keydown', bioModalOnKeydown);
   }
+
+  _bioModalLastFocus = document.activeElement;
 
   modal.querySelector('.bio-modal-name').textContent = bio.name;
   modal.querySelector('.bio-modal-title').textContent = bio.title;
-  modal.querySelector('.bio-modal-text').innerHTML = bio.bio.split('\n\n').map(p => `<p>${p}</p>`).join('');
+  modal.querySelector('.bio-modal-text').innerHTML = bio.bio.split('\n\n').map(p => `<p>${escapeHtml(p)}</p>`).join('');
   modal.querySelector('.bio-modal-quote').textContent = bio.quote;
 
   modal.classList.add('open');
   document.body.style.overflow = 'hidden';
+  const closeBtn = modal.querySelector('.bio-modal-close');
+  requestAnimationFrame(() => closeBtn && closeBtn.focus());
 }
 
 function closeBioModal() {
   const modal = document.getElementById('bio-modal');
-  if (modal) {
-    modal.classList.remove('open');
-    document.body.style.overflow = '';
+  if (!modal) return;
+  modal.classList.remove('open');
+  document.body.style.overflow = '';
+  const prev = _bioModalLastFocus;
+  _bioModalLastFocus = null;
+  if (prev && typeof prev.focus === 'function') {
+    requestAnimationFrame(() => prev.focus());
   }
 }
 
 /* ---------- BOOT ------------------------------------------ */
 document.addEventListener('DOMContentLoaded', () => {
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    document.documentElement.classList.add('reduce-motion');
+  }
   initNav();
   initNavActiveScroll();
   initBackToTop();

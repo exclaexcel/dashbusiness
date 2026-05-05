@@ -1,0 +1,5 @@
+# Substitua o host abaixo pelo domínio de produção, se diferente de dashbusiness.vercel.app
+User-agent: *
+Allow: /
+
+Sitemap: https://dashbusiness.vercel.app/sitemap.xml

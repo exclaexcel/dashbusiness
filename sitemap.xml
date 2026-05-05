@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Host padrão: substitua dashbusiness.vercel.app pelo domínio definitivo (busque e substitua em todo o ficheiro). -->
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url><loc>https://dashbusiness.vercel.app/</loc></url>
+  <url><loc>https://dashbusiness.vercel.app/projetos</loc></url>
+  <url><loc>https://dashbusiness.vercel.app/projetos/projeto?id=sistema-gestao-clinica</loc></url>
+  <url><loc>https://dashbusiness.vercel.app/projetos/projeto?id=automacao-calculo-comissao-vendas</loc></url>
+  <url><loc>https://dashbusiness.vercel.app/projetos/projeto?id=sistema-agenda-consultas</loc></url>
+  <url><loc>https://dashbusiness.vercel.app/projetos/projeto?id=planilha-precificacao-caixas-artesanais</loc></url>
+  <url><loc>https://dashbusiness.vercel.app/projetos/projeto?id=dashboard-processos-inovacao</loc></url>
+  <url><loc>https://dashbusiness.vercel.app/projetos/projeto?id=controle-agenda-prestacao-contas-horas-voo</loc></url>
+  <url><loc>https://dashbusiness.vercel.app/projetos/projeto?id=planilha-orcamento-produto-engenharia</loc></url>
+  <url><loc>https://dashbusiness.vercel.app/projetos/projeto?id=planilhas-gestao-visitas-comerciais</loc></url>
+  <url><loc>https://dashbusiness.vercel.app/projetos/projeto?id=painel-resumo-financeiro-plano-saude</loc></url>
+  <url><loc>https://dashbusiness.vercel.app/projetos/projeto?id=controle-os-servicos-cef</loc></url>
+</urlset>

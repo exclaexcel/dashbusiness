@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#0B1114">
   <title>Projeto — Dash Business</title>
   <meta name="description" content="Detalhes do projeto — Dash Business">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -12,12 +13,15 @@
 </head>
 <body>
 
+  <a href="#main-content" class="skip-link">Pular para o conteúdo</a>
+
   <!-- NAV -->
   <nav id="navbar">
-    <img src="../assets/logo/dash-logo-full.png" class="navbar-bg-img" alt="Dash Business">
     <div class="container">
       <div class="nav-inner">
-        <a href="../index.html" class="nav-logo"></a>
+        <a href="../index.html" class="nav-logo" aria-label="Dash Business — início">
+          <img src="../assets/logo/Logotipo_DashBusiness_OFICIAL_b.png" alt="" class="nav-logo-img" height="40" loading="eager">
+        </a>
         <ul class="nav-links">
           <li><a href="../index.html#sobre"         class="nav-link">Sobre</a></li>
           <li><a href="../index.html#especialistas" class="nav-link">Especialistas</a></li>
@@ -25,7 +29,7 @@
           <li><a href="../index.html#contato"       class="nav-link">Contato</a></li>
         </ul>
         <div class="nav-actions">
-          <button id="nav-hamburger" aria-label="Abrir menu">
+          <button type="button" id="nav-hamburger" class="nav-hamburger" aria-label="Abrir menu" aria-expanded="false" aria-controls="nav-mobile">
             <span></span><span></span><span></span>
           </button>
         </div>
@@ -38,6 +42,8 @@
       <a href="../index.html#contato">Contato</a>
     </div>
   </nav>
+
+  <main id="main-content" tabindex="-1">
 
   <!-- PROJECT DETAIL HERO -->
   <div class="project-detail-hero">
@@ -152,6 +158,8 @@
     </div>
   </section>
 
+  </main>
+
   <!-- FOOTER -->
   <footer>
     <div class="container">
@@ -162,11 +170,11 @@
   <button id="back-to-top" aria-label="Voltar ao topo">↑</button>
 
   <!-- Lightbox -->
-  <div id="lightbox" class="lightbox" onclick="if(event.target===this)closeLightbox()">
-    <button class="lightbox-close" onclick="closeLightbox()" aria-label="Fechar">✕</button>
-    <button class="lightbox-nav prev" id="lb-nav-prev" onclick="lightboxNav(-1)" aria-label="Anterior">‹</button>
+  <div id="lightbox" class="lightbox" role="dialog" aria-modal="true" aria-label="Visualização ampliada">
+    <button type="button" class="lightbox-close" aria-label="Fechar">✕</button>
+    <button type="button" class="lightbox-nav prev" id="lb-nav-prev" aria-label="Anterior">‹</button>
     <img id="lb-img" class="lightbox-img" src="" alt="Imagem do projeto">
-    <button class="lightbox-nav next" id="lb-nav-next" onclick="lightboxNav(1)" aria-label="Próxima">›</button>
+    <button type="button" class="lightbox-nav next" id="lb-nav-next" aria-label="Próxima">›</button>
     <div id="lb-dots" class="lightbox-dots"></div>
   </div>
 
@@ -181,13 +189,13 @@
       var projectId = params.get('id');
 
       if (!projectId) {
-        window.location.href = '/projetos/index.html';
+        window.location.href = 'index.html';
         return;
       }
 
       var project = DB_PROJECTS.find(function(p) { return p.id === projectId; });
       if (!project) {
-        window.location.href = '/projetos/index.html';
+        window.location.href = 'index.html';
         return;
       }
 
@@ -209,7 +217,7 @@
       }
 
       /* Nota de contexto (context_note) */
-      if (project.contextNote && project.contextNote !== '[A complementar]') {
+      if (project.contextNote && String(project.contextNote).trim()) {
         document.getElementById('project-context-note').style.display = '';
         document.getElementById('project-context-note-text').textContent = project.contextNote;
       }
@@ -248,12 +256,22 @@
       }
 
       /* Contexto */
-      document.getElementById('project-context').textContent =
-        project.context || '[A complementar]';
+      var ctxText = project.context || '';
+      var ctxEl = document.getElementById('project-context');
+      ctxEl.textContent = ctxText;
+      if (!String(ctxText).trim()) {
+        var ctxSec = ctxEl.closest('.project-section');
+        if (ctxSec) ctxSec.style.display = 'none';
+      }
 
       /* Problema */
-      document.getElementById('project-problem').textContent =
-        project.problem || project.before || '[A complementar]';
+      var probText = project.problem || project.before || '';
+      var probEl = document.getElementById('project-problem');
+      probEl.textContent = probText;
+      if (!String(probText).trim()) {
+        var probSec = probEl.closest('.project-section');
+        if (probSec) probSec.style.display = 'none';
+      }
 
       /* Solução */
       var solEl = document.getElementById('project-solution');
@@ -270,7 +288,9 @@
       } else if (project.after) {
         solEl.textContent = project.after;
       } else {
-        solEl.textContent = '[A complementar]';
+        solEl.textContent = '';
+        var solSec = solEl.closest('.project-section');
+        if (solSec) solSec.style.display = 'none';
       }
 
       /* Antes / Agora — mostrar só se houver antes e depois */
@@ -300,6 +320,7 @@
 
       /* Resultados (sidebar) */
       var resultsEl = document.getElementById('project-results');
+      var resultsCard = resultsEl.closest('.sidebar-card');
       if (project.resultsList && project.resultsList.length) {
         var ulR = document.createElement('ul');
         ulR.className = 'results-list';
@@ -310,7 +331,8 @@
         });
         resultsEl.appendChild(ulR);
       } else {
-        resultsEl.textContent = '[A complementar]';
+        resultsEl.textContent = '';
+        if (resultsCard) resultsCard.style.display = 'none';
       }
 
       /* Outros projetos (sidebar) — relacionados primeiro, todos vindos de DB_PROJECTS */
@@ -325,13 +347,24 @@
         var listEl = document.getElementById('other-projects-list');
         otherProjects.forEach(function(op) {
           var a = document.createElement('a');
-          a.href = '/projetos/projeto.html?id=' + encodeURIComponent(op.id);
+          a.href = 'projeto.html?id=' + encodeURIComponent(op.id);
           a.className = 'other-project-card';
-          a.innerHTML = '<span class="opc-emoji" aria-hidden="true">' + (op.emoji || '✦') + '</span>'
-            + '<span class="opc-info">'
-            + '<span class="opc-title">' + op.title + '</span>'
-            + '<span class="opc-type">' + (CATEGORY_LABELS[op.category] || op.category) + '</span>'
-            + '</span>';
+          var emojiSpan = document.createElement('span');
+          emojiSpan.className = 'opc-emoji';
+          emojiSpan.setAttribute('aria-hidden', 'true');
+          emojiSpan.textContent = op.emoji || '✦';
+          var info = document.createElement('span');
+          info.className = 'opc-info';
+          var titleSpan = document.createElement('span');
+          titleSpan.className = 'opc-title';
+          titleSpan.textContent = op.title;
+          var typeSpan = document.createElement('span');
+          typeSpan.className = 'opc-type';
+          typeSpan.textContent = CATEGORY_LABELS[op.category] || op.category;
+          info.appendChild(titleSpan);
+          info.appendChild(typeSpan);
+          a.appendChild(emojiSpan);
+          a.appendChild(info);
           listEl.appendChild(a);
         });
       }
@@ -339,19 +372,31 @@
 
     /* ---- Lightbox ---- */
     var _lbImages = [], _lbIndex = 0, _lbRotation = 0;
+    var _lbPrevFocus = null;
 
     function openLightbox(images, index, rotation) {
       _lbImages = images;
       _lbIndex = index;
       _lbRotation = rotation || 0;
+      _lbPrevFocus = document.activeElement;
       renderLightbox();
-      document.getElementById('lightbox').classList.add('open');
+      var lb = document.getElementById('lightbox');
+      lb.classList.add('open');
       document.body.style.overflow = 'hidden';
+      var closeBtn = lb.querySelector('.lightbox-close');
+      requestAnimationFrame(function() {
+        if (closeBtn) closeBtn.focus();
+      });
     }
 
     function closeLightbox() {
       document.getElementById('lightbox').classList.remove('open');
       document.body.style.overflow = '';
+      var prev = _lbPrevFocus;
+      _lbPrevFocus = null;
+      if (prev && typeof prev.focus === 'function') {
+        requestAnimationFrame(function() { prev.focus(); });
+      }
     }
 
     function lightboxNav(dir) {
@@ -371,6 +416,7 @@
       if (many) {
         _lbImages.forEach(function(_, i) {
           var btn = document.createElement('button');
+          btn.type = 'button';
           btn.className = 'lb-dot' + (i === _lbIndex ? ' active' : '');
           btn.setAttribute('aria-label', 'Imagem ' + (i + 1));
           btn.addEventListener('click', function(e) {
@@ -383,13 +429,58 @@
       }
     }
 
-    document.addEventListener('keydown', function(e) {
+    function lightboxOnKeydown(e) {
       var lb = document.getElementById('lightbox');
       if (!lb.classList.contains('open')) return;
-      if (e.key === 'Escape') closeLightbox();
-      if (e.key === 'ArrowLeft') lightboxNav(-1);
-      if (e.key === 'ArrowRight') lightboxNav(1);
-    });
+      if (e.key === 'Escape') {
+        closeLightbox();
+        return;
+      }
+      if (e.key === 'ArrowLeft') {
+        lightboxNav(-1);
+        return;
+      }
+      if (e.key === 'ArrowRight') {
+        lightboxNav(1);
+        return;
+      }
+      if (e.key !== 'Tab') return;
+      var nodes = Array.prototype.slice.call(lb.querySelectorAll('button:not([disabled])')).filter(function(el) {
+        return el.offsetParent !== null || el.getClientRects().length > 0;
+      });
+      if (nodes.length < 2) {
+        if (nodes.length === 1) {
+          e.preventDefault();
+          nodes[0].focus();
+        }
+        return;
+      }
+      var first = nodes[0];
+      var last = nodes[nodes.length - 1];
+      if (e.shiftKey && document.activeElement === first) {
+        e.preventDefault();
+        last.focus();
+      } else if (!e.shiftKey && document.activeElement === last) {
+        e.preventDefault();
+        first.focus();
+      }
+    }
+
+    document.addEventListener('keydown', lightboxOnKeydown);
+
+    (function initDetailPageLightboxUi() {
+      var lb = document.getElementById('lightbox');
+      if (!lb) return;
+      lb.addEventListener('click', function(e) {
+        if (e.target === lb) closeLightbox();
+      });
+      var closeBtn = lb.querySelector('.lightbox-close');
+      var prevBtn = document.getElementById('lb-nav-prev');
+      var nextBtn = document.getElementById('lb-nav-next');
+      if (closeBtn) closeBtn.addEventListener('click', closeLightbox);
+      if (prevBtn) prevBtn.addEventListener('click', function() { lightboxNav(-1); });
+      if (nextBtn) nextBtn.addEventListener('click', function() { lightboxNav(1); });
+    })();
   </script>
 </body>
 </html>
